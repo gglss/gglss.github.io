@@ -1,3 +1,8 @@
+---
+title: 使用docker安装常用软件：mysql
+tags: Docker
+---
+
 ## 使用docker安装常用软件：mysql
 
 ### 以mysql 5.7为例

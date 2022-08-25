@@ -1,3 +1,10 @@
+---
+title: _mysql主从复制docker版
+tags: Docker
+---
+
+
+
 ## _mysql主从复制docker版
 
 ### 安装mysql主从复制（一主一从）

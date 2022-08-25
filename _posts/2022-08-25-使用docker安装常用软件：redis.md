@@ -1,3 +1,8 @@
+---
+title: 使用docker安装常用软件：redis
+tags: Docker
+---
+
 ## 使用docker安装常用软件：redis
 
 使用`docker pull redis:6.0.8 `拉取redis:6.0.8镜像

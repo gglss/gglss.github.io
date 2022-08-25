@@ -1,3 +1,8 @@
+---
+title: _dockerfile
+tags: Docker
+---
+
 ## _dockerfile
 
 ### 以dockerfile的方法来进行对centos的具有vim,ifconfig和jdk8的镜像
