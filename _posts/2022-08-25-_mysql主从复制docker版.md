@@ -1,10 +1,8 @@
 ---
 title: _mysql主从复制docker版
 tags: Docker
-content:docker
+content: docker
 ---
-
-
 
 ## _mysql主从复制docker版
 
