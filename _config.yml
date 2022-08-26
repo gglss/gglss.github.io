@@ -1,14 +1,14 @@
 # Site
-title:              gglss
+title:              Fuyun
 bio:                '<b>在最有热情的年纪，做最爱的事情</b><br>如果想了解我可以先看下关于'
-description:        "可以叫我gglss，这是我的博客，记录一些学习上的心得体会，如果能帮助到你，是我的荣信."
+description:        "可以叫我浮云，这是我的博客，记录一些学习上的心得体会，如果能帮助到你，是我的荣信."
 reading_time:       true
 words_per_minute:   200
 logo:               'assets/img/img791.jpg'
 background:         'assets/img/placeholder-big.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_ZH
-url:                https://gglss.github.io
+url:                https://fuyun791.github.io
 #url:                http://localhost:4000
 
 # Jekyll
@@ -38,10 +38,10 @@ disqus_shortname:   fuyuncai
   #ad-client:
   #ad-slot:
 #bing-verify:
-email:              2302209664@qq.com
+email:              791009557@qq.com
 #twitter:            username
 #facebook:           username
-github-url:         gglss
+github-url:         Fuyun791
 #stackoverflow:     123456/username   from a "http://stackoverflow.com/users/123456/username" link
 #linkedin:          username
 #xing:              username
