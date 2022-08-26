@@ -1,4 +1,7 @@
-source "https://rubygems.org"
+source "https://gems.ruby-china.com"
 
-# gem "github-pages", group: :jekyll_plugins
-gemspec
+gem "jekyll", "~> 3.2.1"
+gem "jekyll-sitemap"
+gem "jekyll-gist"
+gem 'jekyll-mentions'
+gem 'jekyll-feed'
