@@ -41,7 +41,7 @@ disqus_shortname:   fuyuncai
 email:              2302209664@qq.com
 #twitter:            username
 #facebook:           username
-github-url:         Fuyun791
+github-url:         gglss
 #stackoverflow:     123456/username   from a "http://stackoverflow.com/users/123456/username" link
 #linkedin:          username
 #xing:              username
@@ -62,6 +62,7 @@ github-url:         Fuyun791
 #keybase:           username
 #xmpp:              username@server.com
 #hackernews:        username
+contact             https://www.bilibili.com/
 
 # Gems
 gems:
