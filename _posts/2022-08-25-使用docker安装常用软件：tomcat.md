@@ -20,6 +20,10 @@ comments: false
 
 ![image-20220429095205744](.\2022-08-25-使用docker安装常用软件：tomcat.assets\\image-20220429095205744.png)
 
+<figure>
+	<a href=".\2022-08-25-使用docker安装常用软件：tomcat.assets\\image-20220429095205744.png"><img src=".\2022-08-25-使用docker安装常用软件：tomcat.assets\\image-20220429095205744.png"></a>
+</figure>
+
 #### 这是什么原因呢
 
 使用`docker ps`查询到容器编号,`docker exec -it 容器编号 bash` 打开容器
