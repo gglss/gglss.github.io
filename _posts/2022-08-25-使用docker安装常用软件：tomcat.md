@@ -25,6 +25,7 @@ comments: false
 </figure>
 
 
+
 #### 这是什么原因呢
 
 使用`docker ps`查询到容器编号,`docker exec -it 容器编号 bash` 打开容器
