@@ -18,11 +18,12 @@ comments: false
 
 > 运行后使用本地PC使用阿里云的ip和端口访问docker上面的`tomcat`
 
-![image-20220429095205744](.\2022-08-25-使用docker安装常用软件：tomcat.assets\\image-20220429095205744.png)
+![image-20220429095205744](.\2022-08-25-使用docker安装常用软件：tomcat.assets\\image-20220429095205744.jpg)
 
 <figure>
-	<a href=".\2022-08-25-使用docker安装常用软件：tomcat.assets\\image-20220429095205744.png"><img src=".\2022-08-25-使用docker安装常用软件：tomcat.assets\\image-20220429095205744.png"></a>
+	<a href=".\2022-08-25-使用docker安装常用软件：tomcat.assets\\image-20220429095205744.jpg"><img src=".\2022-08-25-使用docker安装常用软件：tomcat.assets\\image-20220429095205744.jpg"></a>
 </figure>
+
 
 #### 这是什么原因呢
 
