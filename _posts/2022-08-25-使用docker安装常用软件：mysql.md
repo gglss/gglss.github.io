@@ -99,7 +99,7 @@ character_set_server = utf8
 
 ### 工作使用版
 
-#### 重建mysql容器实例
+#### xxxxxxxxxx [root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker psCONTAINER ID   IMAGE     COMMAND   CREATED          STATUS          PORTS     NAMES562278524cda   ubuntu    "bash"    20 minutes ago   Up 20 minutes             loving_dewdneycdee90a8c77d   ubuntu    "bash"    45 minutes ago   Up 15 minutes             ubuntu[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps -a -q | xargs docker rm -f562278524cdacdee90a8c77d[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker psCONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]#​shell
 
 ```shell
 docker run -d -p 3306:3306 --privileged=true
