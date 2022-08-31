@@ -3,6 +3,7 @@ layout: post
 title:  使用Redis的ZSet搭配HashMap实现评论
 date:   2020-06-17
 excerpt: "6月17号重写了这篇文章。将List类型改为zset搭配hashmap的形式"
+project: true
 tag:
 - redis
 - Spring Boot 
