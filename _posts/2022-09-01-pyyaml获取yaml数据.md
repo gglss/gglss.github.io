@@ -87,7 +87,7 @@ def get_project_path():
 
 对`add_sep_after`进行判断，如果是`True`,就在后面添加**拼接符**：`all_path = all_path + os.sep`
 
-**windows格式拼接符有可能错误**，就要对拼接符转换格式`all_path = all_path.replace('\\', '/')`
+**windows格式拼接符有可能错误**，就要对拼接符转换格式`all_path = all_path.replace('\\', '/')`,就算没有这个代码，也可以运行出来，只是调试该代码看起来不好看
 
 然后返回`all_path`
 
