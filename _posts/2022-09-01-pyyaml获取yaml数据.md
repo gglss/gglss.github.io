@@ -7,6 +7,7 @@ tag:
 - pytest
 - yaml
 - python
+- 自动化测试
 comments: false
 ---
 
