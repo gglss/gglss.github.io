@@ -2,11 +2,9 @@
 layout: post
 title:  "git提示Timed out的解决办法"
 date:   2022-09-26
-excerpt: 使用git，会发生报错：Failed to connect to github.com port 443 after 21098 ms: Timed out
+excerpt: 仅做测试
 tag:
 - Git
-- github
-- gitee
 comments: false
 ---
 
@@ -24,5 +22,5 @@ git config --global https.proxy
 git config --global --unset https.proxy
 ```
 
-然后可以输入git命令使用
+然后输入git 命令使用
 
