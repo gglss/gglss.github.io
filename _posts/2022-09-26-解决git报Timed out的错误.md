@@ -5,6 +5,8 @@ date:   2022-09-26
 excerpt: 使用git，会发生报错：Failed to connect to github.com port 443 after 21098 ms: Timed out
 tag:
 - Git
+- github
+- gitee
 comments: false
 ---
 
