@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "2022-09-21-使用Java解析Properties文件"
+title:  "使用Java解析Properties文件"
 date:   2022-09-21
 excerpt: 使用java解析properties文件
 tag:
