@@ -18,7 +18,7 @@ docker run --name [自定义名称] -u root --privileged=true -p 3000:8881 -v /o
 
 ### 安装code-server
 
-在(github)[https://github.com/coder/code-server]上下载安装包,解压后剪切到`/home`目录
+在[github](https://github.com/coder/code-server)上下载安装包,解压后剪切到`/home`目录
 
 ### 运行code-server
 ```ssh
