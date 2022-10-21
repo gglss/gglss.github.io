@@ -38,7 +38,7 @@ public class Application {
 + `@SpringBootApplication` 作用是给当前类标明是运行的主类，相当于被SpringBoot托管了
 + `@Controller("com.course.server.intertype")` 钩子标识符，扫描包下面的类，被Springboot托管
 
-#### 创建Get接口
+#### 编写Get接口
 
 创建`MyGetMethod`类
 

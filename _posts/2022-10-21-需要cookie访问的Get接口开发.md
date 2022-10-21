@@ -8,7 +8,9 @@ tag:
 - SpringBoot
 comments: false
 ---
+#### 编写需要cookie才能访问的接口
 
+这个接口还是在`MyGetMethod`类里面编写方法
 
 ```java
 /**
