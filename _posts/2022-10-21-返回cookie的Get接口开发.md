@@ -4,7 +4,7 @@ title: "返回cookie的Get接口开发"
 date:  2022-10-21
 excerpt:  返回cookie的get接口开发
 tag:
-- JAVA
+- Java
 - SpringBoot
 comments: false
 ---
