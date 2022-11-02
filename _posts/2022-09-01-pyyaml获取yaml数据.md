@@ -4,10 +4,8 @@ title:  "如何使用pyyaml获取yaml里面的数据"
 date:   2022-08-31
 excerpt: 在编写自动化时，怎么从yaml文件获取数据
 tag:
-- pytest
 - yaml
-- python
-- 自动化测试
+- python+selenium
 comments: false
 ---
 

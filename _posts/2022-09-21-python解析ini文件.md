@@ -4,9 +4,7 @@ title:  "解析ini文件用于数据驱动"
 date:   2022-09-02
 excerpt: 自动化测试时，该怎么解析ini文件里面的数据
 tag:
-- python
-- pytest
-- 自动化测试
+- python+selenium
 comments: false
 ---
 
