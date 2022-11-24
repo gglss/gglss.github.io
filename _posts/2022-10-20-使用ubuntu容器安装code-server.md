@@ -41,9 +41,13 @@ export PASSWORD="123456" && ./code-server --host 0.0.0.0 --port 8881
 ## 配置HTTPS
 
 > 使用openssl为IP签发证书
+
 ### 安装openssl
+
 一般的linux系统已经内置openssl,可以输入openssl进行查看，没有的话就需要安装
+
 ### 创建证书请求文件
+
 新建`openssl.cnf`，并编辑如下内容
 ```ssh
 [req]
