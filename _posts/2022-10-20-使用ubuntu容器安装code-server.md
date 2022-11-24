@@ -83,12 +83,12 @@ IP.2 = 0.0.0.0
 ```
 
 ### 生成私钥
+
 san_domain_com 为最终生成的文件名，一般以服务器命名，可改。
+
 ```ssl
 openssl genrsa -out san_domain_com.key 2048
 ```
-
-
 
 ### 生成CSR文件
 ```ssl
