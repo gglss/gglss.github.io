@@ -52,7 +52,10 @@ CREATE USER 'slave'@'%' IDENTIFIED BY '123456';
 GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'slave'@'%';
 ```
 
-![图像2](.\2022-08-25_mysql主从复制docker版.assets\图像2.png)
+<figure>
+	<a href="../assets/img/2022-08-25-_mysql主从复制docker版.assets/图像2.png"><img src="../assets/img/2022-08-25-_mysql主从复制docker版.assets/图像2.png"></a>
+</figure>
+
 
 新建从服务器实例3308
 
@@ -103,7 +106,10 @@ master_connect_retry：连接失败重试的时间间隔，单位为秒。
 
 查看从数据库状态发现已经同步
 
-![图像](.\2022-08-25-_mysql主从复制docker版.assets\图像.png)
+<figure>
+	<a href="../assets/img/2022-08-25-_mysql主从复制docker版.assets\图像.png"><img src="../assets/img/2022-08-25-_mysql主从复制docker版.assets\图像.png"></a>
+</figure>
+
 
 主从复制测试
 

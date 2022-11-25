@@ -19,7 +19,7 @@ docker run --name [自定义名称] -u root --privileged=true -p 3300:8881 -v /o
 ```
 ### 安装code-server
 
-在(github)[https://github.com/coder/code-server]上下载安装包,解压后剪切到`/home`目录
+在[github](https://github.com/coder/code-server)上下载安装包,解压后剪切到`/home`目录
 
 ### 运行code-server
 ```ssh
@@ -49,6 +49,7 @@ export PASSWORD="123456" && ./code-server --host 0.0.0.0 --port 8881
 ### 创建证书请求文件
 
 新建`openssl.cnf`，并编辑如下内容
+
 ```ssh
 [req]
 distinguished_name = req_distinguished_name

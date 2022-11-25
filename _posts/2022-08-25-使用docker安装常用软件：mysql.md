@@ -95,27 +95,20 @@ character_set_server = utf8
 
 ##### 删库备份问题
 
----
+<font color="red">只要本机上面的容器卷存在，容器卷位置没有改变的情况下，就算容器被删除，重新打开后，创建的数据库，表都还存在</font>
 
-### 工作使用版
 
-#### xxxxxxxxxx [root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker psCONTAINER ID   IMAGE     COMMAND   CREATED          STATUS          PORTS     NAMES562278524cda   ubuntu    "bash"    20 minutes ago   Up 20 minutes             loving_dewdneycdee90a8c77d   ubuntu    "bash"    45 minutes ago   Up 15 minutes             ubuntu[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps -a -q | xargs docker rm -f562278524cdacdee90a8c77d[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker psCONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]#​shell
+**工作使用版启动容器方法**
 
 ```shell
-docker run -d -p 3306:3306 --privileged=true
--v /ggls/mysql/log:/var/log/mysql
--v /ggls/mysql/data:/var/lib/mysql
--v /ggls/mysql/conf:/etc/mysql/conf.d
--e MYSQL_ROOT_PASSWORD=123456
---name mysql 
-mysql:5.7
+    docker run -d -p 3306:3306 --privileged=true
+    -v /ggls/mysql/log:/var/log/mysql
+    -v /ggls/mysql/data:/var/lib/mysql
+    -v /ggls/mysql/conf:/etc/mysql/conf.d
+    -e MYSQL_ROOT_PASSWORD=123456
+    --name mysql 
+    mysql:5.7
 ```
 
 
-
-
-
-#### 解决删库备份问题
-
-<font color="red">只要本机上面的容器卷存在，容器卷位置没有改变的情况下，就算容器被删除，重新打开后，创建的数据库，表都还存在</font>
 

@@ -18,10 +18,8 @@ comments: false
 
 > 运行后使用本地PC使用阿里云的ip和端口访问docker上面的`tomcat`
 
-![image-20220429095205744](.\2022-08-25-使用docker安装常用软件：tomcat.assets\\image-20220429095205744.jpg)
-
 <figure>
-	<a href=".\2022-08-25-使用docker安装常用软件：tomcat.assets\\image-20220429095205744.jpg"><img src=".\2022-08-25-使用docker安装常用软件：tomcat.assets\\image-20220429095205744.jpg"></a>
+	<a href="../assets/img/2022-08-25-使用docker安装常用软件：tomcat.assets\\image-20220429095205744.jpg"><img src="../assets/img/2022-08-25-使用docker安装常用软件：tomcat.assets\\image-20220429095205744.jpg"></a>
 </figure>
 
 
@@ -70,8 +68,10 @@ root@c52ab6b8b8df:/usr/local/tomcat#
 
 再次使用本地访问
 
-![image-20220429102011983](.\2022-08-25-使用docker安装常用软件：tomcat.assets\image-20220429102011983.png)
 
+<figure>
+	<a href="../assets/img/2022-08-25-使用docker安装常用软件：tomcat.assets/image-20220429102011983.png"><img src="../assets/img/2022-08-25-使用docker安装常用软件：tomcat.assets/image-20220429102011983.png"></a>
+</figure>
 
 
 #### 使用免修改版的tomcat
