@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "使用moko编写Get和Post测试接口（二）"
+title:  "使用moko编写包含cookie信息的测试接口（二）"
 date:   2022-11-28
-excerpt: 使用moko进行Get和Post测试接口的编写
+excerpt: 使用moko进行返回cookie信息和请求带cookie信息的测试接口的编写
 project: true
 tag:
 - java
