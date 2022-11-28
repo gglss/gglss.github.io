@@ -5,7 +5,8 @@ date:   2022-08-31
 excerpt: 在编写自动化时，怎么从yaml文件获取数据
 tag:
 - yaml
-- python+selenium
+- python
+- selenium
 comments: false
 ---
 
