@@ -8,7 +8,6 @@ tag:
 - jmeter
 comments: false 
 ---
-
 ### 作用
 
 把多个请求放入`Simple Controller`,可以多个请求进行同时操作
