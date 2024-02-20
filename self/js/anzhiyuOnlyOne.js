@@ -1,2 +1,1 @@
-var anzhiyu_musicPlaying = false;
-var anzhiyu_musicFirst = false;
+var anzhiyu_musicPlaying=!1,anzhiyu_musicFirst=!1;
