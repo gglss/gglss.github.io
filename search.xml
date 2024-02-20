@@ -382,71 +382,6 @@
       </tags>
   </entry>
   <entry>
-    <title>css教程一</title>
-    <url>/posts/26527.html</url>
-    <content><![CDATA[<h1 id="css选择器"><a href="#css选择器" class="headerlink" title="css选择器"></a>css选择器</h1><h2 id="元素选择器（Element-Selector）"><a href="#元素选择器（Element-Selector）" class="headerlink" title="元素选择器（Element Selector）"></a>元素选择器（Element Selector）</h2><blockquote>
-<p>通过元素名称选择 HTML 元素。<br><figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">// 如下代码，<span class="hljs-selector-tag">p</span> 选择器将选择所有 &lt;<span class="hljs-selector-tag">p</span>&gt; 元素:<br><br>p &#123;<br>  <span class="hljs-attribute">color</span>: blue;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-</blockquote>
-<h2 id="类选择器（Class-Selector）"><a href="#类选择器（Class-Selector）" class="headerlink" title="类选择器（Class Selector）"></a>类选择器（Class Selector）</h2><blockquote>
-<p>通过类别名称选择具有特定类别的 HTML 元素。</p>
-</blockquote>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">// 类选择器以 . 开头，后面跟着类别名称。<br>// 如下代码，<span class="hljs-selector-class">.highlight</span> 选择器将选择所有具有类别为 &quot;highlight&quot; 的元素。<br><br><span class="hljs-selector-class">.highlight</span> &#123;<br>  <span class="hljs-attribute">background-color</span>: yellow;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="ID-选择器（ID-Selector）"><a href="#ID-选择器（ID-Selector）" class="headerlink" title="ID 选择器（ID Selector）"></a>ID 选择器（ID Selector）</h2><blockquote>
-<p>通过元素的唯一标识符（ID）选择 HTML 元素。</p>
-</blockquote>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">// ID 选择器以 # 开头，后面跟着 ID 名称。<br>// 如下代码，<span class="hljs-selector-id">#runoob</span> 选择器将选择具有 ID 为 &quot;runoob&quot; 的元素。<br><br><span class="hljs-selector-id">#runoob</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="属性选择器（Attribute-Selector）"><a href="#属性选择器（Attribute-Selector）" class="headerlink" title="属性选择器（Attribute Selector）"></a>属性选择器（Attribute Selector）</h2><blockquote>
-<p>通过元素的属性选择 HTML 元素。属性选择器可以根据属性名和属性值进行选择。</p>
-</blockquote>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">// 如下代码，<span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=<span class="hljs-string">&quot;text&quot;</span>]</span> 选择器将选择所有 type 属性为 &quot;text&quot; 的 &lt;<span class="hljs-selector-tag">input</span>&gt; 元素。<br><br><span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=<span class="hljs-string">&quot;text&quot;</span>]</span> &#123;<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid gray;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="后代选择器（Descendant-Selector）"><a href="#后代选择器（Descendant-Selector）" class="headerlink" title="后代选择器（Descendant Selector）"></a>后代选择器（Descendant Selector）</h2><blockquote>
-<p>通过指定元素的后代关系选择 HTML 元素。</p>
-</blockquote>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">// 后代选择器使用空格分隔元素名称。<br>// 如下代码，<span class="hljs-selector-tag">div</span> <span class="hljs-selector-tag">p</span> 选择器将选择所有在 &lt;<span class="hljs-selector-tag">div</span>&gt; 元素内的 &lt;<span class="hljs-selector-tag">p</span>&gt; 元素。<br><br><span class="hljs-selector-tag">div</span> <span class="hljs-selector-tag">p</span> &#123;<br>  <span class="hljs-attribute">font-weight</span>: bold;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="背景：-background-属性"><a href="#背景：-background-属性" class="headerlink" title="背景： background 属性"></a>背景： background 属性</h1>]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>_3主3从的`Redis集群`搭建(下)</title>
-    <url>/posts/36554.html</url>
-    <content><![CDATA[<h2 id="3主3从的Redis集群搭建-下"><a href="#3主3从的Redis集群搭建-下" class="headerlink" title="_3主3从的Redis集群搭建(下)"></a>_3主3从的Redis集群搭建(下)</h2><h4 id="进入主机6381"><a href="#进入主机6381" class="headerlink" title="进入主机6381"></a>进入主机6381</h4><blockquote>
-<p>redis-cli -p 6381</p>
-</blockquote>
-<figure>
-    <a href="../assets/img/2022-08-25-_3主3从的Redis集群搭建(下).assets\image-20220509100727145.png"><img src="../assets/img/2022-08-25-_3主3从的Redis集群搭建(下).assets\image-20220509100727145.png"></a>
-</figure>
-
-<h4 id="查看集群信息"><a href="#查看集群信息" class="headerlink" title="查看集群信息"></a>查看集群信息</h4><blockquote>
-<p>cluster info</p>
-</blockquote>
-<figure>
-    <a href="../assets/img/2022-08-25-_3主3从的Redis集群搭建(下).assets\image-20220509101055861.png"><img src="../assets/img/2022-08-25-_3主3从的Redis集群搭建(下).assets\image-20220509101055861.png"></a>
-</figure>
-
-<p>查看主机和从机之间的主从关系</p>
-<blockquote>
-<p>cluster nodes</p>
-</blockquote>
-<p><img src=".\2022-08-25-_3主3从的Redis集群搭建(下" alt="image-20220509101455220">.assets\image-20220509101455220.png)</p>
-<figure>
-    <a href="../assets/img/2022-08-25-_3主3从的Redis集群搭建(下).assets\image-20220509101455220.png"><img src="../assets/img/2022-08-25-_3主3从的Redis集群搭建(下).assets\image-20220509101455220.png"></a>
-</figure>
-
-
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Butterfly美化记录</title>
     <url>/posts/54899.html</url>
     <content><![CDATA[<blockquote>
@@ -623,6 +558,71 @@
       </tags>
   </entry>
   <entry>
+    <title>css教程一</title>
+    <url>/posts/26527.html</url>
+    <content><![CDATA[<h1 id="css选择器"><a href="#css选择器" class="headerlink" title="css选择器"></a>css选择器</h1><h2 id="元素选择器（Element-Selector）"><a href="#元素选择器（Element-Selector）" class="headerlink" title="元素选择器（Element Selector）"></a>元素选择器（Element Selector）</h2><blockquote>
+<p>通过元素名称选择 HTML 元素。<br><figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">// 如下代码，<span class="hljs-selector-tag">p</span> 选择器将选择所有 &lt;<span class="hljs-selector-tag">p</span>&gt; 元素:<br><br>p &#123;<br>  <span class="hljs-attribute">color</span>: blue;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="类选择器（Class-Selector）"><a href="#类选择器（Class-Selector）" class="headerlink" title="类选择器（Class Selector）"></a>类选择器（Class Selector）</h2><blockquote>
+<p>通过类别名称选择具有特定类别的 HTML 元素。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">// 类选择器以 . 开头，后面跟着类别名称。<br>// 如下代码，<span class="hljs-selector-class">.highlight</span> 选择器将选择所有具有类别为 &quot;highlight&quot; 的元素。<br><br><span class="hljs-selector-class">.highlight</span> &#123;<br>  <span class="hljs-attribute">background-color</span>: yellow;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="ID-选择器（ID-Selector）"><a href="#ID-选择器（ID-Selector）" class="headerlink" title="ID 选择器（ID Selector）"></a>ID 选择器（ID Selector）</h2><blockquote>
+<p>通过元素的唯一标识符（ID）选择 HTML 元素。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">// ID 选择器以 # 开头，后面跟着 ID 名称。<br>// 如下代码，<span class="hljs-selector-id">#runoob</span> 选择器将选择具有 ID 为 &quot;runoob&quot; 的元素。<br><br><span class="hljs-selector-id">#runoob</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="属性选择器（Attribute-Selector）"><a href="#属性选择器（Attribute-Selector）" class="headerlink" title="属性选择器（Attribute Selector）"></a>属性选择器（Attribute Selector）</h2><blockquote>
+<p>通过元素的属性选择 HTML 元素。属性选择器可以根据属性名和属性值进行选择。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">// 如下代码，<span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=<span class="hljs-string">&quot;text&quot;</span>]</span> 选择器将选择所有 type 属性为 &quot;text&quot; 的 &lt;<span class="hljs-selector-tag">input</span>&gt; 元素。<br><br><span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=<span class="hljs-string">&quot;text&quot;</span>]</span> &#123;<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid gray;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="后代选择器（Descendant-Selector）"><a href="#后代选择器（Descendant-Selector）" class="headerlink" title="后代选择器（Descendant Selector）"></a>后代选择器（Descendant Selector）</h2><blockquote>
+<p>通过指定元素的后代关系选择 HTML 元素。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">// 后代选择器使用空格分隔元素名称。<br>// 如下代码，<span class="hljs-selector-tag">div</span> <span class="hljs-selector-tag">p</span> 选择器将选择所有在 &lt;<span class="hljs-selector-tag">div</span>&gt; 元素内的 &lt;<span class="hljs-selector-tag">p</span>&gt; 元素。<br><br><span class="hljs-selector-tag">div</span> <span class="hljs-selector-tag">p</span> &#123;<br>  <span class="hljs-attribute">font-weight</span>: bold;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="背景：-background-属性"><a href="#背景：-background-属性" class="headerlink" title="背景： background 属性"></a>背景： background 属性</h1>]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>_3主3从的`Redis集群`搭建(下)</title>
+    <url>/posts/36554.html</url>
+    <content><![CDATA[<h2 id="3主3从的Redis集群搭建-下"><a href="#3主3从的Redis集群搭建-下" class="headerlink" title="_3主3从的Redis集群搭建(下)"></a>_3主3从的Redis集群搭建(下)</h2><h4 id="进入主机6381"><a href="#进入主机6381" class="headerlink" title="进入主机6381"></a>进入主机6381</h4><blockquote>
+<p>redis-cli -p 6381</p>
+</blockquote>
+<figure>
+    <a href="../assets/img/2022-08-25-_3主3从的Redis集群搭建(下).assets\image-20220509100727145.png"><img src="../assets/img/2022-08-25-_3主3从的Redis集群搭建(下).assets\image-20220509100727145.png"></a>
+</figure>
+
+<h4 id="查看集群信息"><a href="#查看集群信息" class="headerlink" title="查看集群信息"></a>查看集群信息</h4><blockquote>
+<p>cluster info</p>
+</blockquote>
+<figure>
+    <a href="../assets/img/2022-08-25-_3主3从的Redis集群搭建(下).assets\image-20220509101055861.png"><img src="../assets/img/2022-08-25-_3主3从的Redis集群搭建(下).assets\image-20220509101055861.png"></a>
+</figure>
+
+<p>查看主机和从机之间的主从关系</p>
+<blockquote>
+<p>cluster nodes</p>
+</blockquote>
+<p><img src=".\2022-08-25-_3主3从的Redis集群搭建(下" alt="image-20220509101455220">.assets\image-20220509101455220.png)</p>
+<figure>
+    <a href="../assets/img/2022-08-25-_3主3从的Redis集群搭建(下).assets\image-20220509101455220.png"><img src="../assets/img/2022-08-25-_3主3从的Redis集群搭建(下).assets\image-20220509101455220.png"></a>
+</figure>
+
+
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>_3主3从的`Redis集群`搭建之哈希槽算法</title>
     <url>/posts/53299.html</url>
     <content><![CDATA[<h2 id="3主3从的Redis集群搭建之哈希槽算法"><a href="#3主3从的Redis集群搭建之哈希槽算法" class="headerlink" title="_3主3从的Redis集群搭建之哈希槽算法"></a>_3主3从的<code>Redis集群</code>搭建之哈希槽算法</h2><h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>解决<code>一致性哈希算法</code>数据倾斜问题</p>
@@ -665,6 +665,64 @@
 <p>碰到它还是进行删除的好</p>
 <p>使用<code>docker image ls -f dangling=true</code>查找虚悬镜像</p>
 <p>使用<code>docker image prune</code>删除镜像</p>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>_3主3从的`Redis集群`搭建(上)</title>
+    <url>/posts/7883.html</url>
+    <content><![CDATA[<h2 id="3主3从的Redis集群搭建-上"><a href="#3主3从的Redis集群搭建-上" class="headerlink" title="_3主3从的Redis集群搭建(上)"></a>_3主3从的<code>Redis集群</code>搭建(上)</h2><ul>
+<li>关闭防火墙，启动docker</li>
+<li>新建6个docker容器<code>docker run -d --name redis-node-6 --net host --privileged=true -v /data/redis/share/redis-node-6:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6386</code><ul>
+<li>docker run        创建并运行docker容器实例</li>
+<li>—name redis-node-6        容器名字</li>
+<li>—net host        使用宿主机的IP和端口，默认</li>
+<li>—privileged=true        获取宿主机root用户权限</li>
+<li>-v /data/redis/share/redis-node-6:/data        容器卷，宿主机地址:docker内部地址</li>
+<li>redis:6.0.8        redis镜像和版本号</li>
+<li>—cluster-enabled yes        开启redis集群</li>
+<li>—appendonly yes        开启持久化</li>
+<li>—port 6386        redis端口号</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -d --name redis-node-1 --net host --privileged=true -v /data/redis/share/redis-node-1:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6381<br>docker run -d --name redis-node-2 --net host --privileged=true -v /data/redis/share/redis-node-2:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6382<br>docker run -d --name redis-node-3 --net host --privileged=true -v /data/redis/share/redis-node-3:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6383<br>docker run -d --name redis-node-4 --net host --privileged=true -v /data/redis/share/redis-node-4:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6384<br>docker run -d --name redis-node-5 --net host --privileged=true -v /data/redis/share/redis-node-5:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6385<br>docker run -d --name redis-node-6 --net host --privileged=true -v /data/redis/share/redis-node-6:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6386<br></code></pre></td></tr></table></figure>
+<p>运行成功，使用<code>docker ps</code>查看</p>
+<ul>
+<li><p>进入容器redis-node-1并为6台机器构建集群关系</p>
+<ul>
+<li><p>进入一台redis进行配置<code>docker exec -it redis-node-1 bash</code></p>
+</li>
+<li><pre><code class="lang-shell">#进入后执行
+redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383 8.142.144.75:6384 8.142.144.75:6385 8.142.144.75:6386 --cluster-replicas 1
+
+ --cluster create    构建集群
+ --cluster-replicas 1    集群关联一比一的关系
+
+--cluster-replicas 1 表示为每个master创建一个slave节点
+# 注意：上面的ip为真实IP
+</code></pre>
+</li>
+</ul>
+<p>有下面的绿色ok字样显示运行成功</p>
+</li>
+</ul>
+<figure>
+    <a href="../assets/img/2022-08-25-_3主3从的Redis集群搭建（上）.assets\image-20220507145226431.png"><img src="../assets/img/2022-08-25-_3主3从的Redis集群搭建（上）.assets\image-20220507145226431.png"></a>
+</figure>
+
+<blockquote>
+<p>如果运行不成功，一直显示<code>Waiting for the cluster to join..</code>一直………………………………….，则是端口没有全部开放，防火墙也要开放端口，以阿里云为例</p>
+</blockquote>
+<p>  就是需要在安全组上面配置6381~6386的6个端口，<font color="red">还需要配置16381~16386的6个端口</font>，共12个端口都要开放，不然会一直提示等待</p>
+<ul>
+<li>一切OK的话，3主3从搭建搞定</li>
+</ul>
 ]]></content>
       <categories>
         <category>工具教程</category>
@@ -754,64 +812,6 @@
 <h4 id="主从容错切换迁移-1"><a href="#主从容错切换迁移-1" class="headerlink" title="主从容错切换迁移"></a>主从容错切换迁移</h4><blockquote>
 <p>主机宕机，从机自动切换成主机</p>
 </blockquote>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>_3主3从的`Redis集群`搭建(上)</title>
-    <url>/posts/7883.html</url>
-    <content><![CDATA[<h2 id="3主3从的Redis集群搭建-上"><a href="#3主3从的Redis集群搭建-上" class="headerlink" title="_3主3从的Redis集群搭建(上)"></a>_3主3从的<code>Redis集群</code>搭建(上)</h2><ul>
-<li>关闭防火墙，启动docker</li>
-<li>新建6个docker容器<code>docker run -d --name redis-node-6 --net host --privileged=true -v /data/redis/share/redis-node-6:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6386</code><ul>
-<li>docker run        创建并运行docker容器实例</li>
-<li>—name redis-node-6        容器名字</li>
-<li>—net host        使用宿主机的IP和端口，默认</li>
-<li>—privileged=true        获取宿主机root用户权限</li>
-<li>-v /data/redis/share/redis-node-6:/data        容器卷，宿主机地址:docker内部地址</li>
-<li>redis:6.0.8        redis镜像和版本号</li>
-<li>—cluster-enabled yes        开启redis集群</li>
-<li>—appendonly yes        开启持久化</li>
-<li>—port 6386        redis端口号</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -d --name redis-node-1 --net host --privileged=true -v /data/redis/share/redis-node-1:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6381<br>docker run -d --name redis-node-2 --net host --privileged=true -v /data/redis/share/redis-node-2:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6382<br>docker run -d --name redis-node-3 --net host --privileged=true -v /data/redis/share/redis-node-3:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6383<br>docker run -d --name redis-node-4 --net host --privileged=true -v /data/redis/share/redis-node-4:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6384<br>docker run -d --name redis-node-5 --net host --privileged=true -v /data/redis/share/redis-node-5:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6385<br>docker run -d --name redis-node-6 --net host --privileged=true -v /data/redis/share/redis-node-6:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6386<br></code></pre></td></tr></table></figure>
-<p>运行成功，使用<code>docker ps</code>查看</p>
-<ul>
-<li><p>进入容器redis-node-1并为6台机器构建集群关系</p>
-<ul>
-<li><p>进入一台redis进行配置<code>docker exec -it redis-node-1 bash</code></p>
-</li>
-<li><pre><code class="lang-shell">#进入后执行
-redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383 8.142.144.75:6384 8.142.144.75:6385 8.142.144.75:6386 --cluster-replicas 1
-
- --cluster create    构建集群
- --cluster-replicas 1    集群关联一比一的关系
-
---cluster-replicas 1 表示为每个master创建一个slave节点
-# 注意：上面的ip为真实IP
-</code></pre>
-</li>
-</ul>
-<p>有下面的绿色ok字样显示运行成功</p>
-</li>
-</ul>
-<figure>
-    <a href="../assets/img/2022-08-25-_3主3从的Redis集群搭建（上）.assets\image-20220507145226431.png"><img src="../assets/img/2022-08-25-_3主3从的Redis集群搭建（上）.assets\image-20220507145226431.png"></a>
-</figure>
-
-<blockquote>
-<p>如果运行不成功，一直显示<code>Waiting for the cluster to join..</code>一直………………………………….，则是端口没有全部开放，防火墙也要开放端口，以阿里云为例</p>
-</blockquote>
-<p>  就是需要在安全组上面配置6381~6386的6个端口，<font color="red">还需要配置16381~16386的6个端口</font>，共12个端口都要开放，不然会一直提示等待</p>
-<ul>
-<li>一切OK的话，3主3从搭建搞定</li>
-</ul>
 ]]></content>
       <categories>
         <category>工具教程</category>
@@ -1191,47 +1191,6 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </tags>
   </entry>
   <entry>
-    <title>容器（一）</title>
-    <url>/posts/26726.html</url>
-    <content><![CDATA[<h2 id="容器（一）"><a href="#容器（一）" class="headerlink" title="容器（一）"></a>容器（一）</h2><h3 id="新建和启动容器"><a href="#新建和启动容器" class="headerlink" title="新建和启动容器"></a>新建和启动容器</h3><h4 id="OPTIONS说明："><a href="#OPTIONS说明：" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h4><ul>
-<li>— name = “容器新名称”    为容器制定一个名称</li>
-<li>-d  后台运行容器并返回容器id， 即启动守护式容器（后台运行）</li>
-<li>-i  以交互模式运行容器，通常与 -t 同时使用</li>
-<li>-t  为容器重新分配一个伪输入终端，通常与 -i 连用，也就是启动交互式容器</li>
-<li>-P  随机端口映射</li>
-<li>-p  指定端口映射</li>
-</ul>
-<h4 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h4><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker images<br>REPOSITORY   TAG       IMAGE ID       CREATED         SIZE<br>tomcat       9.0       b8e65a4d736d   4 months ago    680MB<br>redis        6.0.8     16ecd2772934   18 months ago   104MB<br>ubuntu       15.10     9b9cb95443b5   5 years ago     137MB<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker run -it ubuntu:15.10 /bin/bash<br>root@4fb757f69adb:/# ps -ef<br>UID        PID  PPID  C STIME TTY          TIME CMD<br>root         1     0  0 03:26 pts/0    00:00:00 /bin/bash<br>root        11     1  0 03:26 pts/0    00:00:00 ps -ef<br>root@4fb757f69adb:/# ls<br>bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var<br>root@4fb757f69adb:/# exit<br>exit<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]#<br></code></pre></td></tr></table></figure>
-<p>docker run -it ubuntu:15.10 /bin/bash<br>/bin/bash    希望有交互式shell 就用/bin/bash</p>
-<h3 id="查询正在运行的容器"><a href="#查询正在运行的容器" class="headerlink" title="查询正在运行的容器"></a>查询正在运行的容器</h3><blockquote>
-<p>docker ps [OPTIONS]</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps -a<br>CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS                     PORTS     NAMES<br>cdee90a8c77d   ubuntu    &quot;bash&quot;        3 minutes ago   Exited (0) 3 minutes ago             ubuntu<br>0dcaa91afc0e   ubuntu    &quot;/bin/bush&quot;   5 minutes ago   Created                              myubuntu<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]#<br></code></pre></td></tr></table></figure>
-<p>OPTIONS:</p>
-<ul>
-<li>-a  展示所有容器，包含历史用过容器</li>
-<li>-d  只展示容器id</li>
-<li>-l  显示最近创建的容器</li>
-<li>-n  展示最近创建的前n个容器<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">List containers<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps -n 1<br>CONTAINER ID   IMAGE     COMMAND   CREATED          STATUS                      PORTS     NAMES<br>cdee90a8c77d   ubuntu    &quot;bash&quot;    17 minutes ago   Exited (0) 17 minutes ago             ubuntu<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps<br>CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps -an 1<br>CONTAINER ID   IMAGE     COMMAND   CREATED          STATUS                      PORTS     NAMES<br>cdee90a8c77d   ubuntu    &quot;bash&quot;    17 minutes ago   Exited (0) 17 minutes ago             ubuntu<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps -an 2<br>CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS                      PORTS     NAMES<br>cdee90a8c77d   ubuntu    &quot;bash&quot;        17 minutes ago   Exited (0) 17 minutes ago             ubuntu<br>0dcaa91afc0e   ubuntu    &quot;/bin/bush&quot;   19 minutes ago   Created                               myubuntu<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]#<br><br></code></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="退出容器"><a href="#退出容器" class="headerlink" title="退出容器"></a>退出容器</h3><ul>
-<li>exit</li>
-</ul>
-<p>run进入容器，exit退出容器， 容器停止</p>
-<ul>
-<li>ctrl + p + q</li>
-</ul>
-<p>run进入容器，exit退出容器， 容器不停止<br><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker run -it ubuntu bash<br>root@562278524cda:/# [root@iZ8vbfaek3x3ogtpxnpnwfZ ~]#<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]#<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps<br>CONTAINER ID   IMAGE     COMMAND   CREATED          STATUS          PORTS     NAMES<br>562278524cda   ubuntu    &quot;bash&quot;    16 seconds ago   Up 15 seconds             loving_dewdney<br></code></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>容器（三）</title>
     <url>/posts/62565.html</url>
     <content><![CDATA[<h2 id="容器（三）"><a href="#容器（三）" class="headerlink" title="容器（三）"></a>容器（三）</h2><h3 id="创建后台守护式容器"><a href="#创建后台守护式容器" class="headerlink" title="创建后台守护式容器"></a>创建后台守护式容器</h3><p>(问题)：使用docker run -d ubuntu命令启动后台模式的容器ubuntu，然后用docker ps 查询提示没有找到运行的容器</p>
@@ -1288,29 +1247,38 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </tags>
   </entry>
   <entry>
-    <title>容器（二）</title>
-    <url>/posts/63516.html</url>
-    <content><![CDATA[<h2 id="容器（二）"><a href="#容器（二）" class="headerlink" title="容器（二）"></a>容器（二）</h2><h3 id="启动已经停止运行的容器"><a href="#启动已经停止运行的容器" class="headerlink" title="启动已经停止运行的容器"></a>启动已经停止运行的容器</h3><blockquote>
-<p>docker start 容器id/容器名</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps -a<br>CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS                      PORTS     NAMES<br>562278524cda   ubuntu    &quot;bash&quot;        4 minutes ago    Up 4 minutes                          loving_dewdney<br>9a1a43aee837   ubuntu    &quot;bush&quot;        4 minutes ago    Created                               admiring_wiles<br>cdee90a8c77d   ubuntu    &quot;bash&quot;        29 minutes ago   Exited (0) 29 minutes ago             ubuntu<br>0dcaa91afc0e   ubuntu    &quot;/bin/bush&quot;   31 minutes ago   Created                               myubuntu<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps<br>CONTAINER ID   IMAGE     COMMAND   CREATED         STATUS         PORTS     NAMES<br>562278524cda   ubuntu    &quot;bash&quot;    4 minutes ago   Up 4 minutes             loving_dewdney<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker start cdee90a8c77d<br>cdee90a8c77d<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps<br>CONTAINER ID   IMAGE     COMMAND   CREATED          STATUS         PORTS     NAMES<br>562278524cda   ubuntu    &quot;bash&quot;    5 minutes ago    Up 5 minutes             loving_dewdney<br>cdee90a8c77d   ubuntu    &quot;bash&quot;    30 minutes ago   Up 3 seconds             ubuntu<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]#<br></code></pre></td></tr></table></figure>
-<h3 id="重启容器"><a href="#重启容器" class="headerlink" title="重启容器"></a>重启容器</h3><blockquote>
-<p>docker restart 容器id/容器名</p>
-</blockquote>
-<h3 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h3><blockquote>
-<p>docker stop 容器id/容器名</p>
-</blockquote>
-<h3 id="强制停止容器"><a href="#强制停止容器" class="headerlink" title="强制停止容器"></a>强制停止容器</h3><blockquote>
-<p>docker kill 容器id/容器名</p>
-</blockquote>
-<h3 id="删除已经停止的容器"><a href="#删除已经停止的容器" class="headerlink" title="删除已经停止的容器"></a>删除已经停止的容器</h3><blockquote>
-<p>docker rm 容器id</p>
-</blockquote>
-<h4 id="一次性删除多个容器"><a href="#一次性删除多个容器" class="headerlink" title="一次性删除多个容器"></a>一次性删除多个容器</h4><ul>
-<li>docker rm -f $(docker ps -a -q)</li>
-<li>docker ps -a -q | xargs docker rm</li>
+    <title>容器（一）</title>
+    <url>/posts/26726.html</url>
+    <content><![CDATA[<h2 id="容器（一）"><a href="#容器（一）" class="headerlink" title="容器（一）"></a>容器（一）</h2><h3 id="新建和启动容器"><a href="#新建和启动容器" class="headerlink" title="新建和启动容器"></a>新建和启动容器</h3><h4 id="OPTIONS说明："><a href="#OPTIONS说明：" class="headerlink" title="OPTIONS说明："></a>OPTIONS说明：</h4><ul>
+<li>— name = “容器新名称”    为容器制定一个名称</li>
+<li>-d  后台运行容器并返回容器id， 即启动守护式容器（后台运行）</li>
+<li>-i  以交互模式运行容器，通常与 -t 同时使用</li>
+<li>-t  为容器重新分配一个伪输入终端，通常与 -i 连用，也就是启动交互式容器</li>
+<li>-P  随机端口映射</li>
+<li>-p  指定端口映射</li>
 </ul>
-<p>注：xargs是linux系统的可变参数，把分隔符前面的结果传给xargs里面，然后执行分隔符后面的命令<br><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps<br>CONTAINER ID   IMAGE     COMMAND   CREATED          STATUS          PORTS     NAMES<br>562278524cda   ubuntu    &quot;bash&quot;    20 minutes ago   Up 20 minutes             loving_dewdney<br>cdee90a8c77d   ubuntu    &quot;bash&quot;    45 minutes ago   Up 15 minutes             ubuntu<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps -a -q | xargs docker rm -f<br>562278524cda<br>cdee90a8c77d<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps<br>CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]#<br><br></code></pre></td></tr></table></figure></p>
+<h4 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h4><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker images<br>REPOSITORY   TAG       IMAGE ID       CREATED         SIZE<br>tomcat       9.0       b8e65a4d736d   4 months ago    680MB<br>redis        6.0.8     16ecd2772934   18 months ago   104MB<br>ubuntu       15.10     9b9cb95443b5   5 years ago     137MB<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker run -it ubuntu:15.10 /bin/bash<br>root@4fb757f69adb:/# ps -ef<br>UID        PID  PPID  C STIME TTY          TIME CMD<br>root         1     0  0 03:26 pts/0    00:00:00 /bin/bash<br>root        11     1  0 03:26 pts/0    00:00:00 ps -ef<br>root@4fb757f69adb:/# ls<br>bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var<br>root@4fb757f69adb:/# exit<br>exit<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]#<br></code></pre></td></tr></table></figure>
+<p>docker run -it ubuntu:15.10 /bin/bash<br>/bin/bash    希望有交互式shell 就用/bin/bash</p>
+<h3 id="查询正在运行的容器"><a href="#查询正在运行的容器" class="headerlink" title="查询正在运行的容器"></a>查询正在运行的容器</h3><blockquote>
+<p>docker ps [OPTIONS]</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps -a<br>CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS                     PORTS     NAMES<br>cdee90a8c77d   ubuntu    &quot;bash&quot;        3 minutes ago   Exited (0) 3 minutes ago             ubuntu<br>0dcaa91afc0e   ubuntu    &quot;/bin/bush&quot;   5 minutes ago   Created                              myubuntu<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]#<br></code></pre></td></tr></table></figure>
+<p>OPTIONS:</p>
+<ul>
+<li>-a  展示所有容器，包含历史用过容器</li>
+<li>-d  只展示容器id</li>
+<li>-l  显示最近创建的容器</li>
+<li>-n  展示最近创建的前n个容器<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">List containers<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps -n 1<br>CONTAINER ID   IMAGE     COMMAND   CREATED          STATUS                      PORTS     NAMES<br>cdee90a8c77d   ubuntu    &quot;bash&quot;    17 minutes ago   Exited (0) 17 minutes ago             ubuntu<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps<br>CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps -an 1<br>CONTAINER ID   IMAGE     COMMAND   CREATED          STATUS                      PORTS     NAMES<br>cdee90a8c77d   ubuntu    &quot;bash&quot;    17 minutes ago   Exited (0) 17 minutes ago             ubuntu<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps -an 2<br>CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS                      PORTS     NAMES<br>cdee90a8c77d   ubuntu    &quot;bash&quot;        17 minutes ago   Exited (0) 17 minutes ago             ubuntu<br>0dcaa91afc0e   ubuntu    &quot;/bin/bush&quot;   19 minutes ago   Created                               myubuntu<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]#<br><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="退出容器"><a href="#退出容器" class="headerlink" title="退出容器"></a>退出容器</h3><ul>
+<li>exit</li>
+</ul>
+<p>run进入容器，exit退出容器， 容器停止</p>
+<ul>
+<li>ctrl + p + q</li>
+</ul>
+<p>run进入容器，exit退出容器， 容器不停止<br><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker run -it ubuntu bash<br>root@562278524cda:/# [root@iZ8vbfaek3x3ogtpxnpnwfZ ~]#<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]#<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps<br>CONTAINER ID   IMAGE     COMMAND   CREATED          STATUS          PORTS     NAMES<br>562278524cda   ubuntu    &quot;bash&quot;    16 seconds ago   Up 15 seconds             loving_dewdney<br></code></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>工具教程</category>
@@ -1374,6 +1342,38 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
 <li><code>pull</code>到本地并运行</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker pull 8.142.144.75:5000/ubuntu:1.6<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>容器（二）</title>
+    <url>/posts/63516.html</url>
+    <content><![CDATA[<h2 id="容器（二）"><a href="#容器（二）" class="headerlink" title="容器（二）"></a>容器（二）</h2><h3 id="启动已经停止运行的容器"><a href="#启动已经停止运行的容器" class="headerlink" title="启动已经停止运行的容器"></a>启动已经停止运行的容器</h3><blockquote>
+<p>docker start 容器id/容器名</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps -a<br>CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS                      PORTS     NAMES<br>562278524cda   ubuntu    &quot;bash&quot;        4 minutes ago    Up 4 minutes                          loving_dewdney<br>9a1a43aee837   ubuntu    &quot;bush&quot;        4 minutes ago    Created                               admiring_wiles<br>cdee90a8c77d   ubuntu    &quot;bash&quot;        29 minutes ago   Exited (0) 29 minutes ago             ubuntu<br>0dcaa91afc0e   ubuntu    &quot;/bin/bush&quot;   31 minutes ago   Created                               myubuntu<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps<br>CONTAINER ID   IMAGE     COMMAND   CREATED         STATUS         PORTS     NAMES<br>562278524cda   ubuntu    &quot;bash&quot;    4 minutes ago   Up 4 minutes             loving_dewdney<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker start cdee90a8c77d<br>cdee90a8c77d<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps<br>CONTAINER ID   IMAGE     COMMAND   CREATED          STATUS         PORTS     NAMES<br>562278524cda   ubuntu    &quot;bash&quot;    5 minutes ago    Up 5 minutes             loving_dewdney<br>cdee90a8c77d   ubuntu    &quot;bash&quot;    30 minutes ago   Up 3 seconds             ubuntu<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]#<br></code></pre></td></tr></table></figure>
+<h3 id="重启容器"><a href="#重启容器" class="headerlink" title="重启容器"></a>重启容器</h3><blockquote>
+<p>docker restart 容器id/容器名</p>
+</blockquote>
+<h3 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h3><blockquote>
+<p>docker stop 容器id/容器名</p>
+</blockquote>
+<h3 id="强制停止容器"><a href="#强制停止容器" class="headerlink" title="强制停止容器"></a>强制停止容器</h3><blockquote>
+<p>docker kill 容器id/容器名</p>
+</blockquote>
+<h3 id="删除已经停止的容器"><a href="#删除已经停止的容器" class="headerlink" title="删除已经停止的容器"></a>删除已经停止的容器</h3><blockquote>
+<p>docker rm 容器id</p>
+</blockquote>
+<h4 id="一次性删除多个容器"><a href="#一次性删除多个容器" class="headerlink" title="一次性删除多个容器"></a>一次性删除多个容器</h4><ul>
+<li>docker rm -f $(docker ps -a -q)</li>
+<li>docker ps -a -q | xargs docker rm</li>
+</ul>
+<p>注：xargs是linux系统的可变参数，把分隔符前面的结果传给xargs里面，然后执行分隔符后面的命令<br><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps<br>CONTAINER ID   IMAGE     COMMAND   CREATED          STATUS          PORTS     NAMES<br>562278524cda   ubuntu    &quot;bash&quot;    20 minutes ago   Up 20 minutes             loving_dewdney<br>cdee90a8c77d   ubuntu    &quot;bash&quot;    45 minutes ago   Up 15 minutes             ubuntu<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps -a -q | xargs docker rm -f<br>562278524cda<br>cdee90a8c77d<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]# docker ps<br>CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ ~]#<br><br></code></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>工具教程</category>
@@ -1471,6 +1471,22 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </tags>
   </entry>
   <entry>
+    <title>Mac提示安装包损坏</title>
+    <url>/posts/408340008.html</url>
+    <content><![CDATA[<h3 id="Mac-提示文件已损坏，您应该将它移到废纸篓"><a href="#Mac-提示文件已损坏，您应该将它移到废纸篓" class="headerlink" title="Mac 提示文件已损坏，您应该将它移到废纸篓"></a>Mac 提示文件已损坏，您应该将它移到废纸篓</h3><p>解决办法：</p>
+<p>在终端输入</p>
+<p><code>sudo xattr -d com.apple.quarantine /Applications/PicGo.app</code></p>
+<p><code>/</code>后面是安装路径</p>
+<p>然后输入密码</p>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>mac</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用pip install报错的解决办法</title>
     <url>/posts/4851.html</url>
     <content><![CDATA[<h2 id="报错提示"><a href="#报错提示" class="headerlink" title="报错提示"></a>报错提示</h2><p>今天使用PyCharm下载一个模块<code>pip.exe install locust</code>，有错误提示</p>
@@ -1489,22 +1505,6 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </categories>
       <tags>
         <tag>error</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac提示安装包损坏</title>
-    <url>/posts/408340008.html</url>
-    <content><![CDATA[<h3 id="Mac-提示文件已损坏，您应该将它移到废纸篓"><a href="#Mac-提示文件已损坏，您应该将它移到废纸篓" class="headerlink" title="Mac 提示文件已损坏，您应该将它移到废纸篓"></a>Mac 提示文件已损坏，您应该将它移到废纸篓</h3><p>解决办法：</p>
-<p>在终端输入</p>
-<p><code>sudo xattr -d com.apple.quarantine /Applications/PicGo.app</code></p>
-<p><code>/</code>后面是安装路径</p>
-<p>然后输入密码</p>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>mac</tag>
       </tags>
   </entry>
   <entry>
@@ -1537,6 +1537,362 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </categories>
       <tags>
         <tag>win</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用Java解析Properties文件</title>
+    <url>/posts/50581.html</url>
+    <content><![CDATA[<h4 id="主要函数"><a href="#主要函数" class="headerlink" title="主要函数"></a>主要函数</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>文件后缀</th>
+<th style="text-align:left">函数方法</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.Properties</td>
+<td style="text-align:left">load</td>
+<td>加载文件</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align:left">setProperty</td>
+<td>设置</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align:left">getProperty</td>
+<td>获取</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="编写逻辑"><a href="#编写逻辑" class="headerlink" title="编写逻辑"></a>编写逻辑</h4><p>创建加载文件的方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 加载文件</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> Properties 对象</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@throws</span> IOException I/O输入异常</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> Properties <span class="hljs-title function_">readProperties</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException&#123;<br>    <span class="hljs-comment">// 实例化，创建 Properties 对象</span><br>    <span class="hljs-type">Properties</span> <span class="hljs-variable">properties</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Properties</span>();<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">// 创建文件输入对象 FileInputStream(&quot;testpro.properties&quot;)</span><br>        <span class="hljs-type">InputStream</span> <span class="hljs-variable">inputStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(filepath);<br>        <span class="hljs-comment">// 把文件输入对象放入缓存输入对象 new BufferedInputStream 里面</span><br>        <span class="hljs-type">BufferedInputStream</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedInputStream</span>(inputStream);<br>        <span class="hljs-comment">// 加载文件 in = ParseProperties.class.getResourceAsStream(&quot;testpro.properties&quot;),自动获取 resources 文件夹下路径</span><br>        properties.load(in);<br>    &#125;<span class="hljs-keyword">catch</span> (IOException e)&#123;<br>        e.printStackTrace();<br>    &#125;<br>    <span class="hljs-keyword">return</span> properties;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>获取key后面的数据</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取数据</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> key 数据名称</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 数据等号右边的值</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> Exception 异常</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getPro</span><span class="hljs-params">(String key)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-comment">// 判断文件里面有没有这个 Key</span><br>        <span class="hljs-keyword">if</span> (prop.containsKey(key)) &#123;<br>            <span class="hljs-comment">// 获得key后面的value值</span><br>            <span class="hljs-keyword">return</span> prop.getProperty(key);<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>            System.out.println(<span class="hljs-string">&quot;你获取的key值不对&quot;</span>);<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<p>获取定位类型或者定位表达式</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回定位类型或者定位表达式</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> key 数据名称</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> num 输入0/1</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> num=0时，返回定位类型，num=1时，返回定位表达式</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">get_pro_element</span><span class="hljs-params">(String key, <span class="hljs-type">int</span> num)</span>&#123;<br>        <span class="hljs-keyword">return</span> (num!=<span class="hljs-number">0</span> &amp; num!=<span class="hljs-number">1</span>) ? <span class="hljs-string">&quot;num：参数输入错误&quot;</span> : prop.getProperty(key).split(<span class="hljs-string">&quot;-&gt;&quot;</span>)[num];<br>    &#125;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>Properties</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java基础之方法和函数</title>
+    <url>/posts/7388.html</url>
+    <content><![CDATA[<h1 id="方法和函数"><a href="#方法和函数" class="headerlink" title="方法和函数"></a>方法和函数</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>定义方式</th>
+<th>作用</th>
+<th>调用方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>函数</td>
+<td>public static void 函数名(){}</td>
+<td>封装指定功能的代码块</td>
+<td>函数名()</td>
+</tr>
+<tr>
+<td>方法</td>
+<td>public [static] void 方法名(){}</td>
+<td>类的行为，对象可以执行的一些功能</td>
+<td>对象名.方法名</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h1><blockquote>
+<p>使用<code>static</code>修饰的内容成为静态的内容</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">function1</span><span class="hljs-params">()</span>&#123;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h2><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">function1()<br></code></pre></td></tr></table></figure>
+<h1 id="定义方法"><a href="#定义方法" class="headerlink" title="定义方法"></a>定义方法</h1><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">className1</span>&#123;<br><br>    String name;<br>    <span class="hljs-comment">//静态变量</span><br>    <span class="hljs-keyword">static</span> String age;<br><br>    <span class="hljs-comment">//静态方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title function_">function1</span><span class="hljs-params">()</span>&#123;<br>    &#125;<br><br>    <span class="hljs-comment">//类方法</span><br>    <span class="hljs-comment">//非静态方法可以调用静态变量和非静态变量、静态方法和非静态方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">function2</span><span class="hljs-params">()</span>&#123;<br>    &#125;<br>&#125; <br></code></pre></td></tr></table></figure>
+<h2 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h2><ul>
+<li>调用静态方法,不需要实例化</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">className1.function1()<br></code></pre></td></tr></table></figure>
+<ul>
+<li>调用方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">className1的对象，需要实例化<br></code></pre></td></tr></table></figure>
+<h2 id="静态方法注意事项："><a href="#静态方法注意事项：" class="headerlink" title="静态方法注意事项："></a>静态方法注意事项：</h2><ul>
+<li>静态方法无法直接引用非静态的变量</li>
+<li>静态方法不能直接调用非静态的方法</li>
+</ul>
+<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><ul>
+<li>定义在方法内部，和局部变量处于平行的位置</li>
+<li>生命周期随着方法的调用而加载，随着方法的结束而消亡</li>
+<li>可以在局部代码块中定义一些使用范围和时间都很短的变量,用完就消失啦</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">className1</span>&#123;<br><br>    String name;<br>    <span class="hljs-keyword">static</span> String age;<br><br>    <span class="hljs-comment">//类方法</span><br>    <span class="hljs-comment">//非静态方法可以调用静态变量和非静态变量、静态方法和非静态方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">function2</span><span class="hljs-params">()</span>&#123;<br><br>        <span class="hljs-comment">//定义代码块</span><br>        &#123;<br>           <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">100</span>;<br>           System.out.println(<span class="hljs-string">&quot;方法中的变量i=&quot;</span> + i);<br>        &#125;<br><br>    &#125;<br>&#125; <br></code></pre></td></tr></table></figure>
+<h1 id="构造代码块"><a href="#构造代码块" class="headerlink" title="构造代码块"></a>构造代码块</h1><ul>
+<li>构造代码快写在和构造方法平行的位置</li>
+<li>只要创建对象，构造代码块就会执行，不论是采用有参的还是无参数的构造方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> class&#123;<br>    <span class="hljs-comment">//有参构造</span><br>    class(String name)&#123;<br>    &#125;<br>    <span class="hljs-comment">//无参构造</span><br>    class()&#123;<br>    &#125;<br>    <span class="hljs-comment">//构造代码块</span><br>    &#123;<br>        <span class="hljs-type">int</span> i=<span class="hljs-number">100</span>;<br>        System.out.println(<span class="hljs-string">&quot;构造代码块i=&quot;</span> + i);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="静态代码块"><a href="#静态代码块" class="headerlink" title="静态代码块"></a>静态代码块</h1><ul>
+<li>被static修饰的代码块称为静态代码块</li>
+<li>随着类的加载而加载</li>
+<li>静态代码块只执行一次，在程序中可以完成加载驱动等只执行一次的操作</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> className1&#123;<br>    <span class="hljs-keyword">static</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;我是静态代码块i=&quot;</span> + i);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>包装类</title>
+    <url>/posts/16468.html</url>
+    <content><![CDATA[<ul>
+<li>基本数据类型对应的包装类</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>基本数据类型</th>
+<th>包装类</th>
+<th>大小(字节)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>Byte</td>
+<td>1—（-128~127）</td>
+</tr>
+<tr>
+<td>short</td>
+<td>Short</td>
+<td>2—（-32768~32767）</td>
+</tr>
+<tr>
+<td>int</td>
+<td>Integer</td>
+<td>4</td>
+</tr>
+<tr>
+<td>long</td>
+<td>Long</td>
+<td>8</td>
+</tr>
+<tr>
+<td>float</td>
+<td>Float</td>
+<td>4</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Double</td>
+<td>8</td>
+</tr>
+<tr>
+<td>char</td>
+<td>Character</td>
+<td>2</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="包装类方法"><a href="#包装类方法" class="headerlink" title="包装类方法"></a>包装类方法</h2><ul>
+<li>Integer的作用主要是对int、Integer、String几种类型的数据进行转换，还能获取一些常量</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>compareTo()</td>
+<td>用于将对象与方法的参数进行比较（相同类型）</td>
+</tr>
+<tr>
+<td>decode()</td>
+<td>将方法的参数转为包装类对象</td>
+</tr>
+<tr>
+<td>equals()</td>
+<td>判断对象是否与参数相等</td>
+</tr>
+<tr>
+<td>Integer.parseInt(“字符串’)</td>
+<td>将字符串转为Int类型</td>
+</tr>
+<tr>
+<td>Integer.toString(int数据)</td>
+<td>将Int类型转为字符串</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="compareTo-方法"><a href="#compareTo-方法" class="headerlink" title="compareTo()方法"></a>compareTo()方法</h3><ul>
+<li>如果指定的数与参数相等返回 0。</li>
+<li>如果指定的数小于参数返回 -1。</li>
+<li>如果指定的数大于参数返回 1。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>抽象类与接口</title>
+    <url>/posts/34655.html</url>
+    <content><![CDATA[<h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><p>使用<code>abstract</code>修饰一个类，把这个类变成抽象类，抽象类不能直接创建对象，需要其他类进行继承该抽象类</p>
+<ul>
+<li>抽象方法不能有方法体</li>
+<li>抽象方法必须使用<code>abstract</code>进行修饰，不能有方法体</li>
+<li><p>子类必须实现父抽象类的方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Ahsse</span> &#123;<br>    String name;<br>    <span class="hljs-type">int</span> age;<br>    <br>    <span class="hljs-comment">//普通方法</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">aaa</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;;<br>    <span class="hljs-comment">// 抽象方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> String <span class="hljs-title function_">bbb</span><span class="hljs-params">()</span>;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">sss</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Ahsse</span>&#123;<br>    <br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">bbb</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;实现抽象类的抽象方法&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;ces &quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>使用interface定义接口，相当于class</p>
+</li>
+<li><p>接口可以多继承</p>
+</li>
+<li>变量全部默认使用public static final修饰，使用之前必须赋值</li>
+<li>类里面全部是抽象方法（默认使用public abstract修饰，没有方法体）需要被实现类进行实现</li>
+<li>接口可以被多实现—implements</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字符串</title>
+    <url>/posts/47564.html</url>
+    <content><![CDATA[<h1 id="字符串的方法"><a href="#字符串的方法" class="headerlink" title="字符串的方法"></a>字符串的方法</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str.concat()</td>
+<td>将参数拼接到字符串上</td>
+</tr>
+<tr>
+<td>trim()</td>
+<td>去除字符串两端的字符串，不能去除中间</td>
+</tr>
+<tr>
+<td>replace(oldChar, newChar)</td>
+<td>将字符串的<code>old参数</code>替换为<code>new参数</code></td>
+</tr>
+<tr>
+<td>length()</td>
+<td>返回此字符串的长度</td>
+</tr>
+<tr>
+<td>isEmpty()</td>
+<td>判断字符串是否为空</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="concat-方法"><a href="#concat-方法" class="headerlink" title="concat()方法"></a>concat()方法</h2><ul>
+<li>返回字符串类型</li>
+<li><p>字符串在后面拼接</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;床前明月光&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> str.concat(<span class="hljs-string">&quot;疑是地上霜。&quot;</span>);<br>System.out.println(str1);<br></code></pre></td></tr></table></figure>
+<h2 id="trim-方法"><a href="#trim-方法" class="headerlink" title="trim()方法"></a>trim()方法</h2><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;    床  前明   月光   &quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> str.trim();<br>System.out.println(str1);<br></code></pre></td></tr></table></figure>
+<h2 id="replace-oldChar-newChar-方法"><a href="#replace-oldChar-newChar-方法" class="headerlink" title="replace(oldChar, newChar)方法"></a>replace(oldChar, newChar)方法</h2><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;床前明月光&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> str.replace(<span class="hljs-string">&quot;床&quot;</span>, <span class="hljs-string">&quot;llll&quot;</span>);<br>System.out.println(str1);<br></code></pre></td></tr></table></figure>
+<h2 id="length-方法"><a href="#length-方法" class="headerlink" title="length()方法"></a>length()方法</h2></li>
+<li><p>返回int类型</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;床前明月光&quot;</span>;<br><span class="hljs-type">int</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> str.length();<br>System.out.println(str1);<br></code></pre></td></tr></table></figure>
+<h2 id="isEmpty-方法"><a href="#isEmpty-方法" class="headerlink" title="isEmpty()方法"></a>isEmpty()方法</h2></li>
+<li><p>返回布尔类型</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;床前明月光&quot;</span>;<br><span class="hljs-type">boolean</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> str.isEmpty();<br>System.out.println(str1);<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>继承、重写与重载</title>
+    <url>/posts/55332.html</url>
+    <content><![CDATA[<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>继承是相对于类来说，通过关键字<code>extends</code>来实现</p>
+<ul>
+<li>可以获取父类的属性和方法</li>
+<li>提高代码的复用性</li>
+<li><p>父类修改了内容，子类也会修改</p>
+<h2 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h2><p>父类的属性和方法</p>
+</li>
+<li><p>this表示当前对象的引用</p>
+</li>
+<li>super表示父类对象的引用</li>
+<li>调用构造方法<ul>
+<li>this(参数列表)表示调用当前类中的构造方法</li>
+<li>super(参数列表)表示调用父类的构造方法，必须放在方法中的第一行</li>
+</ul>
+</li>
+<li>调用属性<ul>
+<li>this.属性表示调用当前对象的属性</li>
+<li>super.属性表示调用父类的属性，可以拿到被重写之前的数据</li>
+</ul>
+</li>
+<li><p>调用方法</p>
+<ul>
+<li>this.方法表示调用当前对象的方法</li>
+<li>super.方法表示调用父类的方法，可以拿到被重写之前的方法，不用放在代码的第一行<h1 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h1>重写是子类可以重写父类的方法，使用<code>override标识</code></li>
+</ul>
+</li>
+<li><p>方法名和参数不变，只修改方法体</p>
+</li>
+<li>访问权限不能比父类的范围更小</li>
+<li>私有的方法能被子类继承，但不能使用和重写</li>
+<li><p>静态的方法能被子类继承，能使用但不能被重写 </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">testeass</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">aa</span><span class="hljs-params">(String name, <span class="hljs-type">int</span> age)</span>&#123;<br>        System.out.println(name + age);<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">testaaa</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">testeass</span>&#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">aa</span><span class="hljs-params">(String name, <span class="hljs-type">int</span> age)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;这是重写方法，方法名、参数和返回数据都不变，只能修改方法体&quot;</span>);<br>        System.out.println(name + age);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h1><p>重载是同一个类下对方法进行重载</p>
+</li>
+<li><p>方法名相同，参数不相同 (参数个数不同/参数类型不同/参数排列顺序不同)  </p>
+</li>
+<li>返回类型不限制<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">jichu</span> &#123;<br><br><span class="hljs-comment">//    原方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">hello</span><span class="hljs-params">(String name, <span class="hljs-type">int</span> aa)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;拼接起来的值是:&quot;</span>+ name + aa );<br>    &#125;<br>    <br><span class="hljs-comment">//    重载后的方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">hello</span><span class="hljs-params">(<span class="hljs-type">int</span> aa, String name)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;aaaaaaa:&quot;</span> + aa);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -1607,13 +1963,13 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </tags>
   </entry>
   <entry>
-    <title>jmeter自动化压力测试</title>
-    <url>/posts/63722.html</url>
-    <content><![CDATA[<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
-<li>jmeter脚本实现压测逻辑</li>
-<li>Shell控制逻辑</li>
-<li>使用jmeter进行静默压测</li>
-</ul>
+    <title>Jmeter之静默压测</title>
+    <url>/posts/3219.html</url>
+    <content><![CDATA[<h3 id="静默压测"><a href="#静默压测" class="headerlink" title="静默压测"></a>静默压测</h3><blockquote>
+<p>jmeter -n -t $jmx_file -l $jtl_file</p>
+</blockquote>
+<p>如： jmeter -n -t HTTP代理服务器luzhi.jmx -l result.jtl</p>
+<p>jmx: Jmeter压测程序脚本文件<br>jtl: Jmeter压测请求响应数据的原始文件，查看结果树和聚合报告可以导入该文件查看</p>
 ]]></content>
       <categories>
         <category>工具教程</category>
@@ -1682,13 +2038,13 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </tags>
   </entry>
   <entry>
-    <title>Jmeter之静默压测</title>
-    <url>/posts/3219.html</url>
-    <content><![CDATA[<h3 id="静默压测"><a href="#静默压测" class="headerlink" title="静默压测"></a>静默压测</h3><blockquote>
-<p>jmeter -n -t $jmx_file -l $jtl_file</p>
-</blockquote>
-<p>如： jmeter -n -t HTTP代理服务器luzhi.jmx -l result.jtl</p>
-<p>jmx: Jmeter压测程序脚本文件<br>jtl: Jmeter压测请求响应数据的原始文件，查看结果树和聚合报告可以导入该文件查看</p>
+    <title>jmeter自动化压力测试</title>
+    <url>/posts/63722.html</url>
+    <content><![CDATA[<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
+<li>jmeter脚本实现压测逻辑</li>
+<li>Shell控制逻辑</li>
+<li>使用jmeter进行静默压测</li>
+</ul>
 ]]></content>
       <categories>
         <category>工具教程</category>
@@ -1853,17 +2209,6 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </tags>
   </entry>
   <entry>
-    <title>Modeule Controller和Include Controller</title>
-    <url>/posts/34250.html</url>
-    <content><![CDATA[<h2 id="Modeule-Controller介绍"><a href="#Modeule-Controller介绍" class="headerlink" title="Modeule Controller介绍"></a>Modeule Controller介绍</h2>]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>jmeter</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>随机控制器Random Controller和Random Order Controller</title>
     <url>/posts/29537.html</url>
     <content><![CDATA[<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
@@ -1874,6 +2219,17 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
 <li>Random Order Controller：控制器子节点随机运行全部请求</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>jmeter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Modeule Controller和Include Controller</title>
+    <url>/posts/34250.html</url>
+    <content><![CDATA[<h2 id="Modeule-Controller介绍"><a href="#Modeule-Controller介绍" class="headerlink" title="Modeule Controller介绍"></a>Modeule Controller介绍</h2>]]></content>
       <categories>
         <category>工具教程</category>
       </categories>
@@ -1927,17 +2283,6 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </tags>
   </entry>
   <entry>
-    <title>逻辑控制器If Controller</title>
-    <url>/posts/12932.html</url>
-    <content><![CDATA[<h2 id="逻辑控制器If-Controller"><a href="#逻辑控制器If-Controller" class="headerlink" title="逻辑控制器If Controller"></a>逻辑控制器If Controller</h2>]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>jmeter</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Constant Throughput Timer定时器</title>
     <url>/posts/48851.html</url>
     <content><![CDATA[<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>限制整个运行过程中的生成的吞吐量不要超过某一个值，防止压死系统</p>
@@ -1953,6 +2298,17 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>jmeter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>逻辑控制器If Controller</title>
+    <url>/posts/12932.html</url>
+    <content><![CDATA[<h2 id="逻辑控制器If-Controller"><a href="#逻辑控制器If-Controller" class="headerlink" title="逻辑控制器If Controller"></a>逻辑控制器If Controller</h2>]]></content>
       <categories>
         <category>工具教程</category>
       </categories>
@@ -2194,122 +2550,6 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </tags>
   </entry>
   <entry>
-    <title>性能测试主要关注点</title>
-    <url>/posts/32473.html</url>
-    <content><![CDATA[<h3 id="性能关注点"><a href="#性能关注点" class="headerlink" title="性能关注点"></a>性能关注点</h3><p>接口响应时间</p>
-<p>吞吐量</p>
-<p>TPS: 事务处理能力，每秒处理事务数（打开页面、登录、选择商品、加入购物车、下单、付款）</p>
-<p>注意：“日活” 每日活跃用户数,是运营数据，与性能无关</p>
-<p><strong>八二原则</strong></p>
-<blockquote>
-<p>计算QPS/TPS</p>
-</blockquote>
-<p>相信80%会集中在20%时间内,24小时的流量集中在白天8小时内，同时在午高峰达到高峰</p>
-<h4 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h4><p>根据相应耗时计算公式预估所需并发，一次请求100ms</p>
-<p>根据 <code>QPS = Vue * Rt</code></p>
-<p>1000000 <em> 80% / 8 </em> 3600 * 20% = 277 QPS</p>
-<p>需要27个并发</p>
-]]></content>
-      <categories>
-        <category>经验分享</category>
-      </categories>
-      <tags>
-        <tag>性能测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关闭chrome浏览器自动更新</title>
-    <url>/posts/43612.html</url>
-    <content><![CDATA[<h1 id="屏蔽谷歌的更新服务器"><a href="#屏蔽谷歌的更新服务器" class="headerlink" title="屏蔽谷歌的更新服务器"></a>屏蔽谷歌的更新服务器</h1><figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">修改 &quot;C:\Windows\System32\drivers\etc\host 文件，在最后增加<br></code></pre></td></tr></table></figure>
-<p>修改<code>C:\Windows\System32\drivers\etc\hosts</code>文件，在最后增加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">127.0.0.1 update.googleapis.com<br></code></pre></td></tr></table></figure>
-<p>保存后<code>win+r</code>,输入<code>CMD</code>，输入<code>ipconfig /flushdns</code>刷新<code>DNS</code></p>
-<p>然后重启浏览器</p>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>自动化基础之Xpath定位</title>
-    <url>/posts/43613.html</url>
-    <content><![CDATA[<h5 id="常用函数定位"><a href="#常用函数定位" class="headerlink" title="常用函数定位"></a>常用函数定位</h5><div class="table-container">
-<table>
-<thead>
-<tr>
-<th><strong>定位函数position</strong></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>//*contains(text(),’文字’)/li[position()=3]</td>
-<td>找到第三个 li</td>
-</tr>
-<tr>
-<td>//*contains(text(),’文字’)/li[position()&lt;=2]</td>
-<td>找到前两个 li</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h5 id="Xpath函数进行定位"><a href="#Xpath函数进行定位" class="headerlink" title="Xpath函数进行定位"></a>Xpath函数进行定位</h5><div class="table-container">
-<table>
-<thead>
-<tr>
-<th><strong>定位方式</strong></th>
-<th><strong>描述</strong></th>
-<th><strong>实例</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>contains</td>
-<td>匹配在元素文本中查找包含 ‘文字’ 的元素</td>
-<td>//*contains(text(),’文字’)</td>
-</tr>
-<tr>
-<td>starts-with</td>
-<td>匹配所有id开头为 ‘s’ 的元素</td>
-<td>//*[starts-with(@id,’s’)]</td>
-</tr>
-<tr>
-<td>ends-with</td>
-<td>匹配所有id结尾头为 ‘s’ 的元素</td>
-<td>//*[ends-with(@id,”s”)]</td>
-</tr>
-<tr>
-<td>following-sibling</td>
-<td>匹配和 ‘ul’ 元素同级别的下一个元素</td>
-<td>//div/following-sibling::ul</td>
-</tr>
-<tr>
-<td>preceding-sibling</td>
-<td>匹配当前节点之前的所有同级节点</td>
-<td></td>
-</tr>
-<tr>
-<td>ancestor</td>
-<td>匹配当前节点的所有父级，祖父级还有更高级</td>
-<td>//div/ancestor::li[@role=”menuitem”]</td>
-</tr>
-<tr>
-<td>parent</td>
-<td>匹配当前节点的父节点，相当于 ..</td>
-<td>//div/parent::button</td>
-</tr>
-</tbody>
-</table>
-</div>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>xpath</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>测试必会的sql基本操作</title>
     <url>/posts/11783.html</url>
     <content><![CDATA[<h5 id="1、创建数据库"><a href="#1、创建数据库" class="headerlink" title="1、创建数据库"></a>1、创建数据库</h5><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> database 数据库名;<br><span class="hljs-keyword">create</span> database 数据库名 <span class="hljs-type">character</span> <span class="hljs-keyword">set</span> 字符集;<br></code></pre></td></tr></table></figure>
@@ -2450,6 +2690,122 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </categories>
       <tags>
         <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>性能测试主要关注点</title>
+    <url>/posts/32473.html</url>
+    <content><![CDATA[<h3 id="性能关注点"><a href="#性能关注点" class="headerlink" title="性能关注点"></a>性能关注点</h3><p>接口响应时间</p>
+<p>吞吐量</p>
+<p>TPS: 事务处理能力，每秒处理事务数（打开页面、登录、选择商品、加入购物车、下单、付款）</p>
+<p>注意：“日活” 每日活跃用户数,是运营数据，与性能无关</p>
+<p><strong>八二原则</strong></p>
+<blockquote>
+<p>计算QPS/TPS</p>
+</blockquote>
+<p>相信80%会集中在20%时间内,24小时的流量集中在白天8小时内，同时在午高峰达到高峰</p>
+<h4 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h4><p>根据相应耗时计算公式预估所需并发，一次请求100ms</p>
+<p>根据 <code>QPS = Vue * Rt</code></p>
+<p>1000000 <em> 80% / 8 </em> 3600 * 20% = 277 QPS</p>
+<p>需要27个并发</p>
+]]></content>
+      <categories>
+        <category>经验分享</category>
+      </categories>
+      <tags>
+        <tag>性能测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关闭chrome浏览器自动更新</title>
+    <url>/posts/43612.html</url>
+    <content><![CDATA[<h1 id="屏蔽谷歌的更新服务器"><a href="#屏蔽谷歌的更新服务器" class="headerlink" title="屏蔽谷歌的更新服务器"></a>屏蔽谷歌的更新服务器</h1><figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">修改 &quot;C:\Windows\System32\drivers\etc\host 文件，在最后增加<br></code></pre></td></tr></table></figure>
+<p>修改<code>C:\Windows\System32\drivers\etc\hosts</code>文件，在最后增加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">127.0.0.1 update.googleapis.com<br></code></pre></td></tr></table></figure>
+<p>保存后<code>win+r</code>,输入<code>CMD</code>，输入<code>ipconfig /flushdns</code>刷新<code>DNS</code></p>
+<p>然后重启浏览器</p>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>自动化基础之Xpath定位</title>
+    <url>/posts/43613.html</url>
+    <content><![CDATA[<h5 id="常用函数定位"><a href="#常用函数定位" class="headerlink" title="常用函数定位"></a>常用函数定位</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>定位函数position</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>//*contains(text(),’文字’)/li[position()=3]</td>
+<td>找到第三个 li</td>
+</tr>
+<tr>
+<td>//*contains(text(),’文字’)/li[position()&lt;=2]</td>
+<td>找到前两个 li</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="Xpath函数进行定位"><a href="#Xpath函数进行定位" class="headerlink" title="Xpath函数进行定位"></a>Xpath函数进行定位</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>定位方式</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>实例</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>contains</td>
+<td>匹配在元素文本中查找包含 ‘文字’ 的元素</td>
+<td>//*contains(text(),’文字’)</td>
+</tr>
+<tr>
+<td>starts-with</td>
+<td>匹配所有id开头为 ‘s’ 的元素</td>
+<td>//*[starts-with(@id,’s’)]</td>
+</tr>
+<tr>
+<td>ends-with</td>
+<td>匹配所有id结尾头为 ‘s’ 的元素</td>
+<td>//*[ends-with(@id,”s”)]</td>
+</tr>
+<tr>
+<td>following-sibling</td>
+<td>匹配和 ‘ul’ 元素同级别的下一个元素</td>
+<td>//div/following-sibling::ul</td>
+</tr>
+<tr>
+<td>preceding-sibling</td>
+<td>匹配当前节点之前的所有同级节点</td>
+<td></td>
+</tr>
+<tr>
+<td>ancestor</td>
+<td>匹配当前节点的所有父级，祖父级还有更高级</td>
+<td>//div/ancestor::li[@role=”menuitem”]</td>
+</tr>
+<tr>
+<td>parent</td>
+<td>匹配当前节点的父节点，相当于 ..</td>
+<td>//div/parent::button</td>
+</tr>
+</tbody>
+</table>
+</div>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>xpath</tag>
       </tags>
   </entry>
   <entry>
@@ -2836,362 +3192,6 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </tags>
   </entry>
   <entry>
-    <title>使用Java解析Properties文件</title>
-    <url>/posts/50581.html</url>
-    <content><![CDATA[<h4 id="主要函数"><a href="#主要函数" class="headerlink" title="主要函数"></a>主要函数</h4><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>文件后缀</th>
-<th style="text-align:left">函数方法</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>.Properties</td>
-<td style="text-align:left">load</td>
-<td>加载文件</td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:left">setProperty</td>
-<td>设置</td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:left">getProperty</td>
-<td>获取</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4 id="编写逻辑"><a href="#编写逻辑" class="headerlink" title="编写逻辑"></a>编写逻辑</h4><p>创建加载文件的方法</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 加载文件</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> Properties 对象</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@throws</span> IOException I/O输入异常</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> Properties <span class="hljs-title function_">readProperties</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException&#123;<br>    <span class="hljs-comment">// 实例化，创建 Properties 对象</span><br>    <span class="hljs-type">Properties</span> <span class="hljs-variable">properties</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Properties</span>();<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">// 创建文件输入对象 FileInputStream(&quot;testpro.properties&quot;)</span><br>        <span class="hljs-type">InputStream</span> <span class="hljs-variable">inputStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(filepath);<br>        <span class="hljs-comment">// 把文件输入对象放入缓存输入对象 new BufferedInputStream 里面</span><br>        <span class="hljs-type">BufferedInputStream</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedInputStream</span>(inputStream);<br>        <span class="hljs-comment">// 加载文件 in = ParseProperties.class.getResourceAsStream(&quot;testpro.properties&quot;),自动获取 resources 文件夹下路径</span><br>        properties.load(in);<br>    &#125;<span class="hljs-keyword">catch</span> (IOException e)&#123;<br>        e.printStackTrace();<br>    &#125;<br>    <span class="hljs-keyword">return</span> properties;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>获取key后面的数据</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取数据</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> key 数据名称</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 数据等号右边的值</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> Exception 异常</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getPro</span><span class="hljs-params">(String key)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-comment">// 判断文件里面有没有这个 Key</span><br>        <span class="hljs-keyword">if</span> (prop.containsKey(key)) &#123;<br>            <span class="hljs-comment">// 获得key后面的value值</span><br>            <span class="hljs-keyword">return</span> prop.getProperty(key);<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>            System.out.println(<span class="hljs-string">&quot;你获取的key值不对&quot;</span>);<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
-<p>获取定位类型或者定位表达式</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回定位类型或者定位表达式</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> key 数据名称</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> num 输入0/1</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> num=0时，返回定位类型，num=1时，返回定位表达式</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">get_pro_element</span><span class="hljs-params">(String key, <span class="hljs-type">int</span> num)</span>&#123;<br>        <span class="hljs-keyword">return</span> (num!=<span class="hljs-number">0</span> &amp; num!=<span class="hljs-number">1</span>) ? <span class="hljs-string">&quot;num：参数输入错误&quot;</span> : prop.getProperty(key).split(<span class="hljs-string">&quot;-&gt;&quot;</span>)[num];<br>    &#125;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>Properties</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java基础之方法和函数</title>
-    <url>/posts/7388.html</url>
-    <content><![CDATA[<h1 id="方法和函数"><a href="#方法和函数" class="headerlink" title="方法和函数"></a>方法和函数</h1><div class="table-container">
-<table>
-<thead>
-<tr>
-<th></th>
-<th>定义方式</th>
-<th>作用</th>
-<th>调用方式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>函数</td>
-<td>public static void 函数名(){}</td>
-<td>封装指定功能的代码块</td>
-<td>函数名()</td>
-</tr>
-<tr>
-<td>方法</td>
-<td>public [static] void 方法名(){}</td>
-<td>类的行为，对象可以执行的一些功能</td>
-<td>对象名.方法名</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h1 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h1><blockquote>
-<p>使用<code>static</code>修饰的内容成为静态的内容</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">function1</span><span class="hljs-params">()</span>&#123;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h2><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">function1()<br></code></pre></td></tr></table></figure>
-<h1 id="定义方法"><a href="#定义方法" class="headerlink" title="定义方法"></a>定义方法</h1><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">className1</span>&#123;<br><br>    String name;<br>    <span class="hljs-comment">//静态变量</span><br>    <span class="hljs-keyword">static</span> String age;<br><br>    <span class="hljs-comment">//静态方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-title function_">function1</span><span class="hljs-params">()</span>&#123;<br>    &#125;<br><br>    <span class="hljs-comment">//类方法</span><br>    <span class="hljs-comment">//非静态方法可以调用静态变量和非静态变量、静态方法和非静态方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">function2</span><span class="hljs-params">()</span>&#123;<br>    &#125;<br>&#125; <br></code></pre></td></tr></table></figure>
-<h2 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h2><ul>
-<li>调用静态方法,不需要实例化</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">className1.function1()<br></code></pre></td></tr></table></figure>
-<ul>
-<li>调用方法</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">className1的对象，需要实例化<br></code></pre></td></tr></table></figure>
-<h2 id="静态方法注意事项："><a href="#静态方法注意事项：" class="headerlink" title="静态方法注意事项："></a>静态方法注意事项：</h2><ul>
-<li>静态方法无法直接引用非静态的变量</li>
-<li>静态方法不能直接调用非静态的方法</li>
-</ul>
-<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><ul>
-<li>定义在方法内部，和局部变量处于平行的位置</li>
-<li>生命周期随着方法的调用而加载，随着方法的结束而消亡</li>
-<li>可以在局部代码块中定义一些使用范围和时间都很短的变量,用完就消失啦</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">className1</span>&#123;<br><br>    String name;<br>    <span class="hljs-keyword">static</span> String age;<br><br>    <span class="hljs-comment">//类方法</span><br>    <span class="hljs-comment">//非静态方法可以调用静态变量和非静态变量、静态方法和非静态方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">function2</span><span class="hljs-params">()</span>&#123;<br><br>        <span class="hljs-comment">//定义代码块</span><br>        &#123;<br>           <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">100</span>;<br>           System.out.println(<span class="hljs-string">&quot;方法中的变量i=&quot;</span> + i);<br>        &#125;<br><br>    &#125;<br>&#125; <br></code></pre></td></tr></table></figure>
-<h1 id="构造代码块"><a href="#构造代码块" class="headerlink" title="构造代码块"></a>构造代码块</h1><ul>
-<li>构造代码快写在和构造方法平行的位置</li>
-<li>只要创建对象，构造代码块就会执行，不论是采用有参的还是无参数的构造方法</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> class&#123;<br>    <span class="hljs-comment">//有参构造</span><br>    class(String name)&#123;<br>    &#125;<br>    <span class="hljs-comment">//无参构造</span><br>    class()&#123;<br>    &#125;<br>    <span class="hljs-comment">//构造代码块</span><br>    &#123;<br>        <span class="hljs-type">int</span> i=<span class="hljs-number">100</span>;<br>        System.out.println(<span class="hljs-string">&quot;构造代码块i=&quot;</span> + i);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="静态代码块"><a href="#静态代码块" class="headerlink" title="静态代码块"></a>静态代码块</h1><ul>
-<li>被static修饰的代码块称为静态代码块</li>
-<li>随着类的加载而加载</li>
-<li>静态代码块只执行一次，在程序中可以完成加载驱动等只执行一次的操作</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> className1&#123;<br>    <span class="hljs-keyword">static</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;我是静态代码块i=&quot;</span> + i);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>包装类</title>
-    <url>/posts/16468.html</url>
-    <content><![CDATA[<ul>
-<li>基本数据类型对应的包装类</li>
-</ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>基本数据类型</th>
-<th>包装类</th>
-<th>大小(字节)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>byte</td>
-<td>Byte</td>
-<td>1—（-128~127）</td>
-</tr>
-<tr>
-<td>short</td>
-<td>Short</td>
-<td>2—（-32768~32767）</td>
-</tr>
-<tr>
-<td>int</td>
-<td>Integer</td>
-<td>4</td>
-</tr>
-<tr>
-<td>long</td>
-<td>Long</td>
-<td>8</td>
-</tr>
-<tr>
-<td>float</td>
-<td>Float</td>
-<td>4</td>
-</tr>
-<tr>
-<td>double</td>
-<td>Double</td>
-<td>8</td>
-</tr>
-<tr>
-<td>char</td>
-<td>Character</td>
-<td>2</td>
-</tr>
-<tr>
-<td>boolean</td>
-<td>Boolean</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="包装类方法"><a href="#包装类方法" class="headerlink" title="包装类方法"></a>包装类方法</h2><ul>
-<li>Integer的作用主要是对int、Integer、String几种类型的数据进行转换，还能获取一些常量</li>
-</ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>compareTo()</td>
-<td>用于将对象与方法的参数进行比较（相同类型）</td>
-</tr>
-<tr>
-<td>decode()</td>
-<td>将方法的参数转为包装类对象</td>
-</tr>
-<tr>
-<td>equals()</td>
-<td>判断对象是否与参数相等</td>
-</tr>
-<tr>
-<td>Integer.parseInt(“字符串’)</td>
-<td>将字符串转为Int类型</td>
-</tr>
-<tr>
-<td>Integer.toString(int数据)</td>
-<td>将Int类型转为字符串</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="compareTo-方法"><a href="#compareTo-方法" class="headerlink" title="compareTo()方法"></a>compareTo()方法</h3><ul>
-<li>如果指定的数与参数相等返回 0。</li>
-<li>如果指定的数小于参数返回 -1。</li>
-<li>如果指定的数大于参数返回 1。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>抽象类与接口</title>
-    <url>/posts/34655.html</url>
-    <content><![CDATA[<h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><p>使用<code>abstract</code>修饰一个类，把这个类变成抽象类，抽象类不能直接创建对象，需要其他类进行继承该抽象类</p>
-<ul>
-<li>抽象方法不能有方法体</li>
-<li>抽象方法必须使用<code>abstract</code>进行修饰，不能有方法体</li>
-<li><p>子类必须实现父抽象类的方法</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Ahsse</span> &#123;<br>    String name;<br>    <span class="hljs-type">int</span> age;<br>    <br>    <span class="hljs-comment">//普通方法</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">aaa</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;;<br>    <span class="hljs-comment">// 抽象方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> String <span class="hljs-title function_">bbb</span><span class="hljs-params">()</span>;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">sss</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Ahsse</span>&#123;<br>    <br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">bbb</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;实现抽象类的抽象方法&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;ces &quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>使用interface定义接口，相当于class</p>
-</li>
-<li><p>接口可以多继承</p>
-</li>
-<li>变量全部默认使用public static final修饰，使用之前必须赋值</li>
-<li>类里面全部是抽象方法（默认使用public abstract修饰，没有方法体）需要被实现类进行实现</li>
-<li>接口可以被多实现—implements</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>字符串</title>
-    <url>/posts/47564.html</url>
-    <content><![CDATA[<h1 id="字符串的方法"><a href="#字符串的方法" class="headerlink" title="字符串的方法"></a>字符串的方法</h1><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>str.concat()</td>
-<td>将参数拼接到字符串上</td>
-</tr>
-<tr>
-<td>trim()</td>
-<td>去除字符串两端的字符串，不能去除中间</td>
-</tr>
-<tr>
-<td>replace(oldChar, newChar)</td>
-<td>将字符串的<code>old参数</code>替换为<code>new参数</code></td>
-</tr>
-<tr>
-<td>length()</td>
-<td>返回此字符串的长度</td>
-</tr>
-<tr>
-<td>isEmpty()</td>
-<td>判断字符串是否为空</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="concat-方法"><a href="#concat-方法" class="headerlink" title="concat()方法"></a>concat()方法</h2><ul>
-<li>返回字符串类型</li>
-<li><p>字符串在后面拼接</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;床前明月光&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> str.concat(<span class="hljs-string">&quot;疑是地上霜。&quot;</span>);<br>System.out.println(str1);<br></code></pre></td></tr></table></figure>
-<h2 id="trim-方法"><a href="#trim-方法" class="headerlink" title="trim()方法"></a>trim()方法</h2><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;    床  前明   月光   &quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> str.trim();<br>System.out.println(str1);<br></code></pre></td></tr></table></figure>
-<h2 id="replace-oldChar-newChar-方法"><a href="#replace-oldChar-newChar-方法" class="headerlink" title="replace(oldChar, newChar)方法"></a>replace(oldChar, newChar)方法</h2><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;床前明月光&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> str.replace(<span class="hljs-string">&quot;床&quot;</span>, <span class="hljs-string">&quot;llll&quot;</span>);<br>System.out.println(str1);<br></code></pre></td></tr></table></figure>
-<h2 id="length-方法"><a href="#length-方法" class="headerlink" title="length()方法"></a>length()方法</h2></li>
-<li><p>返回int类型</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;床前明月光&quot;</span>;<br><span class="hljs-type">int</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> str.length();<br>System.out.println(str1);<br></code></pre></td></tr></table></figure>
-<h2 id="isEmpty-方法"><a href="#isEmpty-方法" class="headerlink" title="isEmpty()方法"></a>isEmpty()方法</h2></li>
-<li><p>返回布尔类型</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;床前明月光&quot;</span>;<br><span class="hljs-type">boolean</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> str.isEmpty();<br>System.out.println(str1);<br></code></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>继承、重写与重载</title>
-    <url>/posts/55332.html</url>
-    <content><![CDATA[<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>继承是相对于类来说，通过关键字<code>extends</code>来实现</p>
-<ul>
-<li>可以获取父类的属性和方法</li>
-<li>提高代码的复用性</li>
-<li><p>父类修改了内容，子类也会修改</p>
-<h2 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h2><p>父类的属性和方法</p>
-</li>
-<li><p>this表示当前对象的引用</p>
-</li>
-<li>super表示父类对象的引用</li>
-<li>调用构造方法<ul>
-<li>this(参数列表)表示调用当前类中的构造方法</li>
-<li>super(参数列表)表示调用父类的构造方法，必须放在方法中的第一行</li>
-</ul>
-</li>
-<li>调用属性<ul>
-<li>this.属性表示调用当前对象的属性</li>
-<li>super.属性表示调用父类的属性，可以拿到被重写之前的数据</li>
-</ul>
-</li>
-<li><p>调用方法</p>
-<ul>
-<li>this.方法表示调用当前对象的方法</li>
-<li>super.方法表示调用父类的方法，可以拿到被重写之前的方法，不用放在代码的第一行<h1 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h1>重写是子类可以重写父类的方法，使用<code>override标识</code></li>
-</ul>
-</li>
-<li><p>方法名和参数不变，只修改方法体</p>
-</li>
-<li>访问权限不能比父类的范围更小</li>
-<li>私有的方法能被子类继承，但不能使用和重写</li>
-<li><p>静态的方法能被子类继承，能使用但不能被重写 </p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">testeass</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">aa</span><span class="hljs-params">(String name, <span class="hljs-type">int</span> age)</span>&#123;<br>        System.out.println(name + age);<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">testaaa</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">testeass</span>&#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">aa</span><span class="hljs-params">(String name, <span class="hljs-type">int</span> age)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;这是重写方法，方法名、参数和返回数据都不变，只能修改方法体&quot;</span>);<br>        System.out.println(name + age);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h1><p>重载是同一个类下对方法进行重载</p>
-</li>
-<li><p>方法名相同，参数不相同 (参数个数不同/参数类型不同/参数排列顺序不同)  </p>
-</li>
-<li>返回类型不限制<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">jichu</span> &#123;<br><br><span class="hljs-comment">//    原方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">hello</span><span class="hljs-params">(String name, <span class="hljs-type">int</span> aa)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;拼接起来的值是:&quot;</span>+ name + aa );<br>    &#125;<br>    <br><span class="hljs-comment">//    重载后的方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">hello</span><span class="hljs-params">(<span class="hljs-type">int</span> aa, String name)</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;aaaaaaa:&quot;</span> + aa);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何使用pyyaml获取yaml里面的数据</title>
     <url>/posts/28702.html</url>
     <content><![CDATA[<h5 id="准备数据"><a href="#准备数据" class="headerlink" title="准备数据"></a>准备数据</h5><p>在config目录下创建environment.yaml文件</p>
@@ -3325,22 +3325,6 @@ if __name__ == &quot;__init__&quot;:
       </tags>
   </entry>
   <entry>
-    <title>自动获取driver</title>
-    <url>/posts/1.html</url>
-    <content><![CDATA[<h1 id="自动获取driver"><a href="#自动获取driver" class="headerlink" title="自动获取driver"></a>自动获取driver</h1><h2 id="chrome"><a href="#chrome" class="headerlink" title="chrome"></a>chrome</h2><h3 id="下载驱动"><a href="#下载驱动" class="headerlink" title="下载驱动"></a>下载驱动</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@staticmethod</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">down_driver</span>(<span class="hljs-params">option</span>):<br>    <span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">    return: 返回driver，可以直接使用</span><br><span class="hljs-string">    &#x27;&#x27;&#x27;</span><br>    driver = webdriver.Chrome(<br>        ChromeDriverManager(<br>            url=<span class="hljs-string">&quot;https://registry.npmmirror.com/-/binary/chromedriver&quot;</span>,<br>                            latest_release_url=<span class="hljs-string">&quot;https://registry.npmmirror.com/-/binary/chromedriver/LATEST_RELEASE&quot;</span>,<br>                            cache_valid_range=<span class="hljs-number">365</span>).install(),<br>                            options=option)<br>    driver.delete_all_cookies()<br>    <span class="hljs-keyword">return</span> driver<br></code></pre></td></tr></table></figure>
-<h3 id="下载2"><a href="#下载2" class="headerlink" title="下载2"></a>下载2</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@staticmethod</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">determin_chrome_driver</span>():<br><br>    chrome_path = <span class="hljs-string">r&#x27;C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe&#x27;</span><br><br><br>    <span class="hljs-comment"># 指定谷歌驱动目标位置</span><br>    folder_path = os.path.join(ROOT_DIR, <span class="hljs-string">&quot;env_setting&quot;</span>)<br>    <span class="hljs-comment"># 驱动名称</span><br>    file_name = <span class="hljs-string">&#x27;chromedriver.exe&#x27;</span><br>    <span class="hljs-comment"># 路径拼接</span><br>    file_path = os.path.join(folder_path, file_name)<br><br>    <span class="hljs-keyword">if</span> os.path.exists(file_path):<br>        <span class="hljs-comment"># 获取chromedriver.exe版本(谷歌浏览器驱动)</span><br>        result = subprocess.run([file_path, <span class="hljs-string">&#x27;--version&#x27;</span>], capture_output=<span class="hljs-literal">True</span>, text=<span class="hljs-literal">True</span>)<br>        driverversion = <span class="hljs-string">&#x27;.&#x27;</span>.join(result.stdout.strip().split(<span class="hljs-string">&#x27; &#x27;</span>)[<span class="hljs-number">1</span>].split(<span class="hljs-string">&#x27;.&#x27;</span>)[:-<span class="hljs-number">1</span>])<br><br>        <span class="hljs-comment"># 获取chrome.exe版本(谷歌浏览器)</span><br>        command = <span class="hljs-string">f&#x27;wmic datafile where name=&quot;<span class="hljs-subst">&#123;chrome_path&#125;</span>&quot; get Version /value&#x27;</span><br>        result_a = subprocess.run(command, capture_output=<span class="hljs-literal">True</span>, text=<span class="hljs-literal">True</span>, shell=<span class="hljs-literal">True</span>)<br>        output = result_a.stdout.strip()<br>        chromeversion = <span class="hljs-string">&#x27;.&#x27;</span>.join(output.split(<span class="hljs-string">&#x27;=&#x27;</span>)[<span class="hljs-number">1</span>].split(<span class="hljs-string">&#x27;.&#x27;</span>)[<span class="hljs-number">0</span>:<span class="hljs-number">3</span>])<br><br>        <span class="hljs-comment"># 判断版本是否一致，不一致就重新下载</span><br>        <span class="hljs-keyword">if</span> driverversion != chromeversion:<br>            <span class="hljs-comment"># 使用ChromeDriverManager安装ChromeDriver，并获取驱动程序的路径</span><br>            download_driver_path = ChromeDriverManager().install()<br>            <span class="hljs-comment"># 复制文件到目标位置</span><br>            shutil.copy(download_driver_path, folder_path)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;版本一致，无需重新下载！&quot;</span>)<br><br>    <span class="hljs-keyword">else</span>:<br>        download_driver_path = ChromeDriverManager().install()<br>        shutil.copy(download_driver_path, folder_path)<br><br>    <span class="hljs-keyword">return</span> file_path<br></code></pre></td></tr></table></figure>
-<h2 id="edge"><a href="#edge" class="headerlink" title="edge"></a>edge</h2><h3 id="下载驱动-1"><a href="#下载驱动-1" class="headerlink" title="下载驱动"></a>下载驱动</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> webdriver_manager.microsoft <span class="hljs-keyword">import</span> EdgeChromiumDriverManager<br>    <br><span class="hljs-meta">@staticmethod</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">download_edgedriver</span>():<br>    <span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">    function：下载edge浏览器驱动</span><br><span class="hljs-string">    return: 返回一个下载的路径</span><br><span class="hljs-string">    &#x27;&#x27;&#x27;</span><br>    folder_path = EdgeChromiumDriverManager().install()<br>    shutil.copy(folder_path, webDriver)   <span class="hljs-comment"># 拷贝folder_path到webDriver目录下</span><br>    <span class="hljs-keyword">return</span> folder_path<br></code></pre></td></tr></table></figure>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># driver = webdriver.Edge(service=Service(下载路径))</span><br>driver = webdriver.Edge(service=Service(ddDriver.download_edgedriver()))<br></code></pre></td></tr></table></figure>
-<h2 id="firefox"><a href="#firefox" class="headerlink" title="firefox"></a>firefox</h2><h3 id="下载驱动-2"><a href="#下载驱动-2" class="headerlink" title="下载驱动"></a>下载驱动</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@staticmethod</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">down_driver</span>(<span class="hljs-params">option</span>):<br>        driver = webdriver.Firefox<br>        (<br>            			      					       		           service=FirefoxService(GeckoDriverManager(url=<span class="hljs-string">&quot;https://github.com/mozilla/geckodriver/releases/download&quot;</span>,<br>                                                      latest_release_url=<span class="hljs-string">&quot;https://api.github.com/repos/mozilla/geckodriver/&quot;</span><br>                                                                         <span class="hljs-string">&quot;releases/latest&quot;</span>,<br>                                   cache_valid_range=<span class="hljs-number">365</span>).install(),<br>                                   options=option))<br>        <span class="hljs-keyword">return</span> driver<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python自动化配置参数</title>
     <url>/posts/1.html</url>
     <content><![CDATA[<h1 id="selenium-配置参数"><a href="#selenium-配置参数" class="headerlink" title="selenium 配置参数"></a>selenium 配置参数</h1><p>每次当selenium启动chrome浏览器的时候，chrome浏览器很干净，没有插件、没有收藏、没有历史记录，这是因为selenium在启动chrome时为了保证最快的运行效率，启动了一个裸浏览器，这就是为什么需要配置参数的原因，但是有些时候我们需要的不仅是一个裸浏览器</p>
@@ -3405,6 +3389,22 @@ if __name__ == &quot;__init__&quot;:
       </tags>
   </entry>
   <entry>
+    <title>自动获取driver</title>
+    <url>/posts/1.html</url>
+    <content><![CDATA[<h1 id="自动获取driver"><a href="#自动获取driver" class="headerlink" title="自动获取driver"></a>自动获取driver</h1><h2 id="chrome"><a href="#chrome" class="headerlink" title="chrome"></a>chrome</h2><h3 id="下载驱动"><a href="#下载驱动" class="headerlink" title="下载驱动"></a>下载驱动</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@staticmethod</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">down_driver</span>(<span class="hljs-params">option</span>):<br>    <span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">    return: 返回driver，可以直接使用</span><br><span class="hljs-string">    &#x27;&#x27;&#x27;</span><br>    driver = webdriver.Chrome(<br>        ChromeDriverManager(<br>            url=<span class="hljs-string">&quot;https://registry.npmmirror.com/-/binary/chromedriver&quot;</span>,<br>                            latest_release_url=<span class="hljs-string">&quot;https://registry.npmmirror.com/-/binary/chromedriver/LATEST_RELEASE&quot;</span>,<br>                            cache_valid_range=<span class="hljs-number">365</span>).install(),<br>                            options=option)<br>    driver.delete_all_cookies()<br>    <span class="hljs-keyword">return</span> driver<br></code></pre></td></tr></table></figure>
+<h3 id="下载2"><a href="#下载2" class="headerlink" title="下载2"></a>下载2</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@staticmethod</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">determin_chrome_driver</span>():<br><br>    chrome_path = <span class="hljs-string">r&#x27;C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe&#x27;</span><br><br><br>    <span class="hljs-comment"># 指定谷歌驱动目标位置</span><br>    folder_path = os.path.join(ROOT_DIR, <span class="hljs-string">&quot;env_setting&quot;</span>)<br>    <span class="hljs-comment"># 驱动名称</span><br>    file_name = <span class="hljs-string">&#x27;chromedriver.exe&#x27;</span><br>    <span class="hljs-comment"># 路径拼接</span><br>    file_path = os.path.join(folder_path, file_name)<br><br>    <span class="hljs-keyword">if</span> os.path.exists(file_path):<br>        <span class="hljs-comment"># 获取chromedriver.exe版本(谷歌浏览器驱动)</span><br>        result = subprocess.run([file_path, <span class="hljs-string">&#x27;--version&#x27;</span>], capture_output=<span class="hljs-literal">True</span>, text=<span class="hljs-literal">True</span>)<br>        driverversion = <span class="hljs-string">&#x27;.&#x27;</span>.join(result.stdout.strip().split(<span class="hljs-string">&#x27; &#x27;</span>)[<span class="hljs-number">1</span>].split(<span class="hljs-string">&#x27;.&#x27;</span>)[:-<span class="hljs-number">1</span>])<br><br>        <span class="hljs-comment"># 获取chrome.exe版本(谷歌浏览器)</span><br>        command = <span class="hljs-string">f&#x27;wmic datafile where name=&quot;<span class="hljs-subst">&#123;chrome_path&#125;</span>&quot; get Version /value&#x27;</span><br>        result_a = subprocess.run(command, capture_output=<span class="hljs-literal">True</span>, text=<span class="hljs-literal">True</span>, shell=<span class="hljs-literal">True</span>)<br>        output = result_a.stdout.strip()<br>        chromeversion = <span class="hljs-string">&#x27;.&#x27;</span>.join(output.split(<span class="hljs-string">&#x27;=&#x27;</span>)[<span class="hljs-number">1</span>].split(<span class="hljs-string">&#x27;.&#x27;</span>)[<span class="hljs-number">0</span>:<span class="hljs-number">3</span>])<br><br>        <span class="hljs-comment"># 判断版本是否一致，不一致就重新下载</span><br>        <span class="hljs-keyword">if</span> driverversion != chromeversion:<br>            <span class="hljs-comment"># 使用ChromeDriverManager安装ChromeDriver，并获取驱动程序的路径</span><br>            download_driver_path = ChromeDriverManager().install()<br>            <span class="hljs-comment"># 复制文件到目标位置</span><br>            shutil.copy(download_driver_path, folder_path)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;版本一致，无需重新下载！&quot;</span>)<br><br>    <span class="hljs-keyword">else</span>:<br>        download_driver_path = ChromeDriverManager().install()<br>        shutil.copy(download_driver_path, folder_path)<br><br>    <span class="hljs-keyword">return</span> file_path<br></code></pre></td></tr></table></figure>
+<h2 id="edge"><a href="#edge" class="headerlink" title="edge"></a>edge</h2><h3 id="下载驱动-1"><a href="#下载驱动-1" class="headerlink" title="下载驱动"></a>下载驱动</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> webdriver_manager.microsoft <span class="hljs-keyword">import</span> EdgeChromiumDriverManager<br>    <br><span class="hljs-meta">@staticmethod</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">download_edgedriver</span>():<br>    <span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">    function：下载edge浏览器驱动</span><br><span class="hljs-string">    return: 返回一个下载的路径</span><br><span class="hljs-string">    &#x27;&#x27;&#x27;</span><br>    folder_path = EdgeChromiumDriverManager().install()<br>    shutil.copy(folder_path, webDriver)   <span class="hljs-comment"># 拷贝folder_path到webDriver目录下</span><br>    <span class="hljs-keyword">return</span> folder_path<br></code></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># driver = webdriver.Edge(service=Service(下载路径))</span><br>driver = webdriver.Edge(service=Service(ddDriver.download_edgedriver()))<br></code></pre></td></tr></table></figure>
+<h2 id="firefox"><a href="#firefox" class="headerlink" title="firefox"></a>firefox</h2><h3 id="下载驱动-2"><a href="#下载驱动-2" class="headerlink" title="下载驱动"></a>下载驱动</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@staticmethod</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">down_driver</span>(<span class="hljs-params">option</span>):<br>        driver = webdriver.Firefox<br>        (<br>            			      					       		           service=FirefoxService(GeckoDriverManager(url=<span class="hljs-string">&quot;https://github.com/mozilla/geckodriver/releases/download&quot;</span>,<br>                                                      latest_release_url=<span class="hljs-string">&quot;https://api.github.com/repos/mozilla/geckodriver/&quot;</span><br>                                                                         <span class="hljs-string">&quot;releases/latest&quot;</span>,<br>                                   cache_valid_range=<span class="hljs-number">365</span>).install(),<br>                                   options=option))<br>        <span class="hljs-keyword">return</span> driver<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Shell脚本初探</title>
     <url>/posts/38168.html</url>
     <content><![CDATA[<h5 id="编写shell脚本时，必须以-bin-bash-开头"><a href="#编写shell脚本时，必须以-bin-bash-开头" class="headerlink" title="编写shell脚本时，必须以 #! /bin/bash 开头"></a>编写shell脚本时，必须以 <font color='red' font-size='40px'>#! /bin/bash</font> 开头</h5><p>在linux创建<code>helloworld.sh</code>文件，在文件内输入：</p>
@@ -3451,51 +3451,6 @@ if __name__ == &quot;__init__&quot;:
 <p>最后一次命令的返回状态，如果返回变量的值为0，则表示最后一次命令执行正确，如果变量的值非0，则证明上一条变量返回不正确</p>
 <p><strong>举个栗子</strong></p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@b09ed0cc2c9d opt]# $?<br>bash: 0: command not found<br>[root@b09ed0cc2c9d opt]# echo $?<br>127<br>[root@b09ed0cc2c9d opt]# echo $?<br>0<br>[root@b09ed0cc2c9d opt]#<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Shell脚本入门</title>
-    <url>/posts/41091.html</url>
-    <content><![CDATA[<h5 id="创建txt文件并向txt文件追加数据"><a href="#创建txt文件并向txt文件追加数据" class="headerlink" title="创建txt文件并向txt文件追加数据"></a>创建txt文件并向txt文件追加数据</h5><p>首先创建<code>test_shell.sh</code>文件</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">touch test_shell.sh<br></code></pre></td></tr></table></figure>
-<p>在<code>test_shell.sh</code>文件输入shell脚本</p>
-<ul>
-<li><p>使用<code>shell</code>创建<code>banzhang.txt</code>文件</p>
-</li>
-<li><p>在文件中追加数据<code>echo &quot;aabbccdd&quot; &gt;&gt; banzhang.txt</code></p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">!/bin/bash</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">指定目录</span><br>cd /opt/<br><span class="hljs-meta prompt_"># </span><span class="language-bash">创建文件</span><br>touch banzhang.txt<br><span class="hljs-meta prompt_"># </span><span class="language-bash">向文件追加数据</span><br>echo &quot;touch banzhang&quot; &gt;&gt; banzhang.txt<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Shell条件判断</title>
-    <url>/posts/50013.html</url>
-    <content><![CDATA[<h5 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h5><p>[ condition ] （<font color='red' font-size='40px'>注意，condition 前后要有空格</font>）</p>
-<p>注意：条件非空即为 true,[ atguigu ]返回 true, [] 返回 false.</p>
-<h5 id="常用条件判断"><a href="#常用条件判断" class="headerlink" title="常用条件判断"></a>常用条件判断</h5><h6 id="两个整数之间进行比较"><a href="#两个整数之间进行比较" class="headerlink" title="两个整数之间进行比较"></a>两个整数之间进行比较</h6><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">= 字符串比较<br>-lt 小于<br>-le 小于等于<br>-eq 等于<br>-gt 大于<br>-ge 大于等于<br>-ne 不等于<br></code></pre></td></tr></table></figure>
-<p>举个栗子</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[23 -lt 80]<br>echo $?  # 判断上一步操作是不是正确<br></code></pre></td></tr></table></figure>
-<h6 id="按照文件权限进行判断"><a href="#按照文件权限进行判断" class="headerlink" title="按照文件权限进行判断"></a>按照文件权限进行判断</h6><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">-r 读<br>-w 写<br>-x 执行<br></code></pre></td></tr></table></figure>
-<p>举个栗子</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[ -w 1.sh ]<br>echo $?<br></code></pre></td></tr></table></figure>
-<h6 id="文件类型判断"><a href="#文件类型判断" class="headerlink" title="文件类型判断"></a>文件类型判断</h6><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">-f 文件存在且是一个常规文件<br>-e 文件存在<br>-d 文件存在且是一个目录<br></code></pre></td></tr></table></figure>
-<p>举个栗子</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[ -e 2.sh ]<br>echo $?<br></code></pre></td></tr></table></figure>
-<h6 id="多条件判断"><a href="#多条件判断" class="headerlink" title="多条件判断"></a>多条件判断</h6><p>$$$$ 与 ，前对，才执行后</p>
-<p><code>||</code> 或 </p>
 ]]></content>
       <categories>
         <category>工具教程</category>
@@ -3624,6 +3579,51 @@ if __name__ == &quot;__init__&quot;:
 
 <p>将sed.txt文件中的第二行删除并将wo替换成ni</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@b09ed0cc2c9d opt]# sed -e &quot;2d&quot; -e &quot;s/wo/ni/g&quot; sed.txt<br>dong shen<br>ni  ni<br>lai  lai<br><br>le  le<br>[root@b09ed0cc2c9d opt]#<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Shell脚本入门</title>
+    <url>/posts/41091.html</url>
+    <content><![CDATA[<h5 id="创建txt文件并向txt文件追加数据"><a href="#创建txt文件并向txt文件追加数据" class="headerlink" title="创建txt文件并向txt文件追加数据"></a>创建txt文件并向txt文件追加数据</h5><p>首先创建<code>test_shell.sh</code>文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">touch test_shell.sh<br></code></pre></td></tr></table></figure>
+<p>在<code>test_shell.sh</code>文件输入shell脚本</p>
+<ul>
+<li><p>使用<code>shell</code>创建<code>banzhang.txt</code>文件</p>
+</li>
+<li><p>在文件中追加数据<code>echo &quot;aabbccdd&quot; &gt;&gt; banzhang.txt</code></p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">!/bin/bash</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">指定目录</span><br>cd /opt/<br><span class="hljs-meta prompt_"># </span><span class="language-bash">创建文件</span><br>touch banzhang.txt<br><span class="hljs-meta prompt_"># </span><span class="language-bash">向文件追加数据</span><br>echo &quot;touch banzhang&quot; &gt;&gt; banzhang.txt<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Shell条件判断</title>
+    <url>/posts/50013.html</url>
+    <content><![CDATA[<h5 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h5><p>[ condition ] （<font color='red' font-size='40px'>注意，condition 前后要有空格</font>）</p>
+<p>注意：条件非空即为 true,[ atguigu ]返回 true, [] 返回 false.</p>
+<h5 id="常用条件判断"><a href="#常用条件判断" class="headerlink" title="常用条件判断"></a>常用条件判断</h5><h6 id="两个整数之间进行比较"><a href="#两个整数之间进行比较" class="headerlink" title="两个整数之间进行比较"></a>两个整数之间进行比较</h6><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">= 字符串比较<br>-lt 小于<br>-le 小于等于<br>-eq 等于<br>-gt 大于<br>-ge 大于等于<br>-ne 不等于<br></code></pre></td></tr></table></figure>
+<p>举个栗子</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[23 -lt 80]<br>echo $?  # 判断上一步操作是不是正确<br></code></pre></td></tr></table></figure>
+<h6 id="按照文件权限进行判断"><a href="#按照文件权限进行判断" class="headerlink" title="按照文件权限进行判断"></a>按照文件权限进行判断</h6><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">-r 读<br>-w 写<br>-x 执行<br></code></pre></td></tr></table></figure>
+<p>举个栗子</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[ -w 1.sh ]<br>echo $?<br></code></pre></td></tr></table></figure>
+<h6 id="文件类型判断"><a href="#文件类型判断" class="headerlink" title="文件类型判断"></a>文件类型判断</h6><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">-f 文件存在且是一个常规文件<br>-e 文件存在<br>-d 文件存在且是一个目录<br></code></pre></td></tr></table></figure>
+<p>举个栗子</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[ -e 2.sh ]<br>echo $?<br></code></pre></td></tr></table></figure>
+<h6 id="多条件判断"><a href="#多条件判断" class="headerlink" title="多条件判断"></a>多条件判断</h6><p>$$$$ 与 ，前对，才执行后</p>
+<p><code>||</code> 或 </p>
 ]]></content>
       <categories>
         <category>工具教程</category>
@@ -3823,6 +3823,24 @@ if __name__ == &quot;__init__&quot;:
       </tags>
   </entry>
   <entry>
+    <title>接口开发环境部署</title>
+    <url>/posts/557.html</url>
+    <content><![CDATA[<h4 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h4><ul>
+<li>IDEA</li>
+<li>Maven</li>
+<li>Spring Boot</li>
+<li>JDK_86001</li>
+</ul>
+<h4 id="在idea安装SpringBoot插件"><a href="#在idea安装SpringBoot插件" class="headerlink" title="在idea安装SpringBoot插件"></a>在idea安装SpringBoot插件</h4><p>在maven下安装插件，需要在<code>pox.xml</code>文件输入下面的数据，然后更新文件<br><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><br>&lt;properties&gt;<br>    &lt;maven.compiler.source&gt;<span class="hljs-number">8</span>&lt;/maven.compiler.source&gt;<br>    &lt;maven.compiler.target&gt;<span class="hljs-number">8</span>&lt;/maven.compiler.target&gt;<br>    &lt;springboot.version&gt;<span class="hljs-number">2.5</span><span class="hljs-number">.6</span>&lt;/springboot.version&gt;<br>    &lt;swagger.version&gt;<span class="hljs-number">2.9</span><span class="hljs-number">.2</span>&lt;/swagger.version&gt;<br>&lt;/properties&gt;<br><br>&lt;dependencies&gt;<br>    &lt;!--    springboot <span class="hljs-number">2.5</span><span class="hljs-number">.6</span>    --&gt;<br>    &lt;dependency&gt;<br>        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;<br>        &lt;version&gt;$&#123;springboot.version&#125;&lt;/version&gt;<br>        &lt;type&gt;pom&lt;/type&gt;<br>    &lt;/dependency&gt;<br>    &lt;dependency&gt;<br>        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;<br>        &lt;version&gt;$&#123;springboot.version&#125;&lt;/version&gt;<br>    &lt;/dependency&gt;<br>&lt;/dependencies&gt;<br><br></code></pre></td></tr></table></figure><br>上面的<code>$&#123;springboot.version&#125;</code>是在上面<properties>里面定义的版本信息，如果多个插件的版本一致就可以在属性上进行定义，然后使用变量进行引用</p>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>返回cookie的Get接口开发</title>
     <url>/posts/24951.html</url>
     <content><![CDATA[<h4 id="位置布局"><a href="#位置布局" class="headerlink" title="位置布局"></a>位置布局</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">- java<br>  - com.course.server<br>    - intertype<br>      MyGetMethod<br>    Application<br>- resources<br>  - application.properties<br></code></pre></td></tr></table></figure>
@@ -3852,16 +3870,10 @@ if __name__ == &quot;__init__&quot;:
       </tags>
   </entry>
   <entry>
-    <title>接口开发环境部署</title>
-    <url>/posts/557.html</url>
-    <content><![CDATA[<h4 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h4><ul>
-<li>IDEA</li>
-<li>Maven</li>
-<li>Spring Boot</li>
-<li>JDK_86001</li>
-</ul>
-<h4 id="在idea安装SpringBoot插件"><a href="#在idea安装SpringBoot插件" class="headerlink" title="在idea安装SpringBoot插件"></a>在idea安装SpringBoot插件</h4><p>在maven下安装插件，需要在<code>pox.xml</code>文件输入下面的数据，然后更新文件<br><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><br>&lt;properties&gt;<br>    &lt;maven.compiler.source&gt;<span class="hljs-number">8</span>&lt;/maven.compiler.source&gt;<br>    &lt;maven.compiler.target&gt;<span class="hljs-number">8</span>&lt;/maven.compiler.target&gt;<br>    &lt;springboot.version&gt;<span class="hljs-number">2.5</span><span class="hljs-number">.6</span>&lt;/springboot.version&gt;<br>    &lt;swagger.version&gt;<span class="hljs-number">2.9</span><span class="hljs-number">.2</span>&lt;/swagger.version&gt;<br>&lt;/properties&gt;<br><br>&lt;dependencies&gt;<br>    &lt;!--    springboot <span class="hljs-number">2.5</span><span class="hljs-number">.6</span>    --&gt;<br>    &lt;dependency&gt;<br>        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;<br>        &lt;version&gt;$&#123;springboot.version&#125;&lt;/version&gt;<br>        &lt;type&gt;pom&lt;/type&gt;<br>    &lt;/dependency&gt;<br>    &lt;dependency&gt;<br>        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;<br>        &lt;version&gt;$&#123;springboot.version&#125;&lt;/version&gt;<br>    &lt;/dependency&gt;<br>&lt;/dependencies&gt;<br><br></code></pre></td></tr></table></figure><br>上面的<code>$&#123;springboot.version&#125;</code>是在上面<properties>里面定义的版本信息，如果多个插件的版本一致就可以在属性上进行定义，然后使用变量进行引用</p>
-]]></content>
+    <title>需要cookie访问的Get接口开发</title>
+    <url>/posts/15521.html</url>
+    <content><![CDATA[<h4 id="编写需要cookie才能访问的接口"><a href="#编写需要cookie才能访问的接口" class="headerlink" title="编写需要cookie才能访问的接口"></a>编写需要cookie才能访问的接口</h4><p>这个接口还是在<code>MyGetMethod</code>类里面编写方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 要求客户端携带cookie访问</span><br><span class="hljs-comment"> * 这是一个需要携带cookies信息才能访问的get请求</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@RequestMapping(value = &quot;/get/with/cookies&quot;, method = RequestMethod.GET)</span><br><span class="hljs-meta">@ApiOperation(value = &quot;要求客户端携带cookie访问&quot;, httpMethod = &quot;GET&quot;)</span><br><span class="hljs-keyword">public</span> String <span class="hljs-title function_">getWithCookies</span><span class="hljs-params">(HttpServletRequest request)</span>&#123;<br>    Cookie[] cookies = request.getCookies();<br>    <span class="hljs-keyword">if</span>(Objects.isNull(cookies))&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;你必须携带cookies信息来&quot;</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(Cookie cookie : cookies)&#123;<br>        <span class="hljs-keyword">if</span>(cookie.getName().equals(<span class="hljs-string">&quot;login&quot;</span>) &amp;&amp; cookie.getValue().equals(<span class="hljs-string">&quot;True&quot;</span>))&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;恭喜你，访问成功！，这是一个需要携带cookies信息才能访问的get请求&quot;</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;你必须携带cookies信息来&quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工具教程</category>
       </categories>
@@ -3879,18 +3891,6 @@ if __name__ == &quot;__init__&quot;:
 <p>方法二<code>url: ip:port/get/with/param/10/20</code>：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 第二种需要携带参数访问的get请求</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-meta">@RequestMapping(value = &quot;/get/with/param/&#123;start&#125;/&#123;end&#125;&quot;, method = RequestMethod.GET)</span><br><span class="hljs-meta">@ApiOperation(value = &quot;需要参数才能访问的get请求的第二种实现方法&quot;, httpMethod = &quot;GET&quot;)</span><br><span class="hljs-keyword">public</span> Map&lt;String,Integer&gt; <span class="hljs-title function_">myGetList</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Integer start,</span><br><span class="hljs-params">                                    <span class="hljs-meta">@PathVariable</span> Integer end)</span>&#123;<br><br>    Map&lt;String, Integer&gt; myList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br><br>    myList.put(<span class="hljs-string">&quot;鞋&quot;</span>,<span class="hljs-number">400</span>);<br>    myList.put(<span class="hljs-string">&quot;电脑&quot;</span>,<span class="hljs-number">5000</span>);<br>    myList.put(<span class="hljs-string">&quot;手机&quot;</span>,<span class="hljs-number">3500</span>);<br><br>    <span class="hljs-keyword">return</span> myList;<br>&#125;<br></code></pre></td></tr></table></figure>
 ]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>需要cookie访问的Get接口开发</title>
-    <url>/posts/15521.html</url>
-    <content><![CDATA[<h4 id="编写需要cookie才能访问的接口"><a href="#编写需要cookie才能访问的接口" class="headerlink" title="编写需要cookie才能访问的接口"></a>编写需要cookie才能访问的接口</h4><p>这个接口还是在<code>MyGetMethod</code>类里面编写方法</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 要求客户端携带cookie访问</span><br><span class="hljs-comment"> * 这是一个需要携带cookies信息才能访问的get请求</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@RequestMapping(value = &quot;/get/with/cookies&quot;, method = RequestMethod.GET)</span><br><span class="hljs-meta">@ApiOperation(value = &quot;要求客户端携带cookie访问&quot;, httpMethod = &quot;GET&quot;)</span><br><span class="hljs-keyword">public</span> String <span class="hljs-title function_">getWithCookies</span><span class="hljs-params">(HttpServletRequest request)</span>&#123;<br>    Cookie[] cookies = request.getCookies();<br>    <span class="hljs-keyword">if</span>(Objects.isNull(cookies))&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;你必须携带cookies信息来&quot;</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(Cookie cookie : cookies)&#123;<br>        <span class="hljs-keyword">if</span>(cookie.getName().equals(<span class="hljs-string">&quot;login&quot;</span>) &amp;&amp; cookie.getValue().equals(<span class="hljs-string">&quot;True&quot;</span>))&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;恭喜你，访问成功！，这是一个需要携带cookies信息才能访问的get请求&quot;</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;你必须携带cookies信息来&quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工具教程</category>
       </categories>
