@@ -475,205 +475,6 @@
       </tags>
   </entry>
   <entry>
-    <title>_3主3从的`Redis集群`搭建(上)</title>
-    <url>/posts/7883.html</url>
-    <content><![CDATA[<h2 id="3主3从的Redis集群搭建-上"><a href="#3主3从的Redis集群搭建-上" class="headerlink" title="_3主3从的Redis集群搭建(上)"></a>_3主3从的<code>Redis集群</code>搭建(上)</h2><ul>
-<li>关闭防火墙，启动docker</li>
-<li>新建6个docker容器<code>docker run -d --name redis-node-6 --net host --privileged=true -v /data/redis/share/redis-node-6:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6386</code><ul>
-<li>docker run        创建并运行docker容器实例</li>
-<li>—name redis-node-6        容器名字</li>
-<li>—net host        使用宿主机的IP和端口，默认</li>
-<li>—privileged=true        获取宿主机root用户权限</li>
-<li>-v /data/redis/share/redis-node-6:/data        容器卷，宿主机地址:docker内部地址</li>
-<li>redis:6.0.8        redis镜像和版本号</li>
-<li>—cluster-enabled yes        开启redis集群</li>
-<li>—appendonly yes        开启持久化</li>
-<li>—port 6386        redis端口号</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -d --name redis-node-1 --net host --privileged=true -v /data/redis/share/redis-node-1:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6381<br>docker run -d --name redis-node-2 --net host --privileged=true -v /data/redis/share/redis-node-2:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6382<br>docker run -d --name redis-node-3 --net host --privileged=true -v /data/redis/share/redis-node-3:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6383<br>docker run -d --name redis-node-4 --net host --privileged=true -v /data/redis/share/redis-node-4:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6384<br>docker run -d --name redis-node-5 --net host --privileged=true -v /data/redis/share/redis-node-5:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6385<br>docker run -d --name redis-node-6 --net host --privileged=true -v /data/redis/share/redis-node-6:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6386<br></code></pre></td></tr></table></figure>
-<p>运行成功，使用<code>docker ps</code>查看</p>
-<ul>
-<li><p>进入容器redis-node-1并为6台机器构建集群关系</p>
-<ul>
-<li><p>进入一台redis进行配置<code>docker exec -it redis-node-1 bash</code></p>
-</li>
-<li><pre><code class="lang-shell">#进入后执行
-redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383 8.142.144.75:6384 8.142.144.75:6385 8.142.144.75:6386 --cluster-replicas 1
-
- --cluster create    构建集群
- --cluster-replicas 1    集群关联一比一的关系
-
---cluster-replicas 1 表示为每个master创建一个slave节点
-# 注意：上面的ip为真实IP
-</code></pre>
-</li>
-</ul>
-<p>有下面的绿色ok字样显示运行成功</p>
-</li>
-</ul>
-<figure>
-    <a href="../assets/img/2022-08-25-_3主3从的Redis集群搭建（上）.assets\image-20220507145226431.png"><img src="../assets/img/2022-08-25-_3主3从的Redis集群搭建（上）.assets\image-20220507145226431.png"></a>
-</figure>
-
-<blockquote>
-<p>如果运行不成功，一直显示<code>Waiting for the cluster to join..</code>一直………………………………….，则是端口没有全部开放，防火墙也要开放端口，以阿里云为例</p>
-</blockquote>
-<p>  就是需要在安全组上面配置6381~6386的6个端口，<font color="red">还需要配置16381~16386的6个端口</font>，共12个端口都要开放，不然会一直提示等待</p>
-<ul>
-<li>一切OK的话，3主3从搭建搞定</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>_mysql主从复制docker版</title>
-    <url>/posts/42656.html</url>
-    <content><![CDATA[<h2 id="mysql主从复制docker版"><a href="#mysql主从复制docker版" class="headerlink" title="_mysql主从复制docker版"></a>_mysql主从复制docker版</h2><h3 id="安装mysql主从复制（一主一从）"><a href="#安装mysql主从复制（一主一从）" class="headerlink" title="安装mysql主从复制（一主一从）"></a>安装mysql主从复制（一主一从）</h3><p>新建主服务器容器实例3307</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -p 3307:3306 --name mysql-master -v /mydata/mysql-master/log/:/var/log/mysql -v /mydata/mysql-master/data:/var/lib/mysql -v /mydata/mysql-master/conf:/etc/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7<br></code></pre></td></tr></table></figure>
-<p>进入<code>/mydata/mysql-master/conf</code>目录下新建<code>my.cnf</code>把下面内容粘贴到<code>my.cnf</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[mysqld]<br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 设置server_id，同一局域网中需要唯一</span></span><br>server_id=101 <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 指定不需要同步的数据库名称</span></span><br>binlog-ignore-db=mysql  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 开启二进制日志功能</span></span><br>log-bin=mall-mysql-bin  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 设置二进制日志使用内存大小（事务）</span></span><br>binlog_cache_size=1M  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 设置使用的二进制日志格式（mixed,statement,row）</span></span><br>binlog_format=mixed  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 二进制日志过期清理时间。默认值为0，表示不自动清理。</span></span><br>expire_logs_days=7  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 跳过主从复制中遇到的所有错误或指定类型的错误，避免slave端复制中断。</span></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 如：1062错误是指一些主键重复，1032错误是因为主从数据库数据不一致</span></span><br>slave_skip_errors=1062<br></code></pre></td></tr></table></figure>
-<p>修改完配置后重启master容器</p>
-<p>master容器实例内创建数据同步用户</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">建立一个用户</span><br>CREATE USER &#x27;slave&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27;;<br><span class="hljs-meta prompt_"># </span><span class="language-bash">对新建的用户进行授权</span><br>GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO &#x27;slave&#x27;@&#x27;%&#x27;;<br></code></pre></td></tr></table></figure>
-<figure>
-    <a href="../assets/img/2022-08-25-_mysql主从复制docker版.assets/图像2.png"><img src="../assets/img/2022-08-25-_mysql主从复制docker版.assets/图像2.png"></a>
-</figure>
-
-
-<p>新建从服务器实例3308</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -p 3308:3306 --name mysql-slave -v /mydata/mysql-slave/log/:/var/log/mysql -v /mydata/mysql-slave/data:/var/lib/mysql -v /mydata/mysql-slave/conf:/etc/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7<br></code></pre></td></tr></table></figure>
-<p>进入/mydata/mysql-slave/conf目录下新建my.cnf</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 设置使用的二进制日志格式（mixed,statement,row）</span></span><br>binlog_format=mixed  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 二进制日志过期清理时间。默认值为0，表示不自动清理。</span></span><br>expire_logs_days=7  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 跳过主从复制中遇到的所有错误或指定类型的错误，避免slave端复制中断。</span></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 如：1062错误是指一些主键重复，1032错误是因为主从数据库数据不一致</span></span><br>slave_skip_errors=1062  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># relay_log配置中继日志</span></span><br>relay_log=mall-mysql-relay-bin  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># log_slave_updates表示slave将复制事件写进自己的二进制日志</span></span><br>log_slave_updates=1  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># slave设置为只读（具有super权限的用户除外）</span></span><br>read_only=1<br></code></pre></td></tr></table></figure>
-<p>重启从机实例<code>docker restart mysql-slave</code></p>
-<p>在主数据库中查看主从同步状态<code>show master status;</code></p>
-<p>进入mysql-slave从机容器</p>
-<p>在从数据库中配置主从复制<code>change master to master_host=&#39;宿主机ip&#39;, master_user=&#39;slave&#39;, master_password=&#39;123456&#39;, master_port=3307, master_log_file=&#39;mall-mysql-bin.000001&#39;, master_log_pos=617, master_connect_retry=30;</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">说明：</span><br>master_host：主数据库的IP地址；<br>master_port：主数据库的运行端口；<br>master_user：在主数据库创建的用于同步数据的用户账号；<br>master_password：在主数据库创建的用于同步数据的用户密码；<br>master_log_file：指定从数据库要复制数据的日志文件，通过查看主数据的状态，获取File参数；<br>master_log_pos：指定从数据库从哪个位置开始复制数据，通过查看主数据的状态，获取Position参数；<br>master_connect_retry：连接失败重试的时间间隔，单位为秒。<br></code></pre></td></tr></table></figure>
-<p>在从数据库中查看主从同步状态<code>show slave status \G;</code></p>
-<p>在从数据库中开启主从同步<code>start slave</code></p>
-<p>查看从数据库状态发现已经同步</p>
-<figure>
-    <a href="../assets/img/2022-08-25-_mysql主从复制docker版.assets\图像.png"><img src="../assets/img/2022-08-25-_mysql主从复制docker版.assets\图像.png"></a>
-</figure>
-
-
-<p>主从复制测试</p>
-<p>主机创建数据库，创建表，插入数据，搜索表的数据</p>
-<p>从机直接搜索标的数据</p>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>_主从容错切换迁移</title>
-    <url>/posts/58353.html</url>
-    <content><![CDATA[<h2 id="主从容错切换迁移"><a href="#主从容错切换迁移" class="headerlink" title="_主从容错切换迁移"></a>_主从容错切换迁移</h2><h4 id="进入redis集群"><a href="#进入redis集群" class="headerlink" title="进入redis集群"></a>进入redis集群</h4><blockquote>
-<p>注意：进入集群环境后，不能使用单机版的<code>redis-cli -p 6381</code></p>
-</blockquote>
-<p>因为这样会在增加数据时有<code>error</code>报错出现</p>
-<figure>
-    <a href="../assets/img/2022-08-25-_主从容错切换迁移.assets\image-20220509103958088.png"><img src="../assets/img/2022-08-25-_主从容错切换迁移.assets\image-20220509103958088.png"></a>
-</figure>
-
-
-<p>使用<code>set k1 v1</code>错误是因为1号主机里面的编号是0到5460，超过了这个范围就会报错</p>
-<blockquote>
-<p>正确进入的方法<code>redis-cli -p 6381 -c</code></p>
-<p>-c 的作用是优化路由</p>
-</blockquote>
-<figure>
-    <a href="../assets/img/2022-08-25-_主从容错切换迁移.assets\image-20220509104855415.png"><img src="../assets/img/2022-08-25-_主从容错切换迁移.assets\image-20220509104855415.png"></a>
-</figure>
-
-
-<font color="green">注：FLUSHALL：作用是清除之前添加的记录</font>
-
-<h4 id="集群检查"><a href="#集群检查" class="headerlink" title="集群检查"></a>集群检查</h4><blockquote>
-<p>redis-cli —cluster check 8.142.144.75:6381</p>
-</blockquote>
-<font color="green">注：可以进入任意一台主机</font>
-
-
-<figure>
-    <a href="../assets/img/2022-08-25-_主从容错切换迁移.assets\image-20220509135040693.png"><img src="../assets/img/2022-08-25-_主从容错切换迁移.assets\image-20220509135040693.png"></a>
-</figure>
-
-
-<h4 id="主从容错切换迁移-1"><a href="#主从容错切换迁移-1" class="headerlink" title="主从容错切换迁移"></a>主从容错切换迁移</h4><blockquote>
-<p>主机宕机，从机自动切换成主机</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker 帮助启动类命令（一）</title>
-    <url>/posts/16766.html</url>
-    <content><![CDATA[<h2 id="docker-帮助启动类命令（一）"><a href="#docker-帮助启动类命令（一）" class="headerlink" title="docker 帮助启动类命令（一）"></a>docker 帮助启动类命令（一）</h2><p>启动docker</p>
-<blockquote>
-<p>systemctl start docker</p>
-</blockquote>
-<p>停止docker</p>
-<blockquote>
-<p>systemctl stop docker</p>
-</blockquote>
-<p>查看docker状态</p>
-<blockquote>
-<p>systemctl status docker</p>
-</blockquote>
-<p>重启 docker，没有任何提示说明启动成功</p>
-<blockquote>
-<p>systemctl restart docker</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker 帮助启动类命令（二）</title>
-    <url>/posts/53508.html</url>
-    <content><![CDATA[<h2 id="docker-帮助启动类命令（二）"><a href="#docker-帮助启动类命令（二）" class="headerlink" title="docker 帮助启动类命令（二）"></a>docker 帮助启动类命令（二）</h2><p>docker 开机启动</p>
-<blockquote>
-<p>systemctl enable docker </p>
-</blockquote>
-<p>查看 docker 概要信息</p>
-<blockquote>
-<p>docker info</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@iZ8vbfaek3x3ogtpxnpnwfZ /]# docker info<br>Client:<br> Context:    default<br> Debug Mode: false<br> Plugins:<br>  app: Docker App (Docker Inc., v0.9.1-beta3)<br>  buildx: Docker Buildx (Docker Inc., v0.7.1-docker)<br>  scan: Docker Scan (Docker Inc., v0.12.0)<br><br>Server:<br> Containers: 6<br>  Running: 0<br>  Paused: 0<br>  Stopped: 6<br> Images: 5<br> Server Version: 20.10.12<br> Storage Driver: overlay2<br>  Backing Filesystem: extfs<br>  Supports d_type: true<br>  Native Overlay Diff: true<br>  userxattr: false<br> Logging Driver: json-file<br> Cgroup Driver: cgroupfs<br> Cgroup Version: 1<br> Plugins:<br>  Volume: local<br>  Network: bridge host ipvlan macvlan null overlay<br>  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog<br> Swarm: inactive<br> Runtimes: io.containerd.runc.v2 io.containerd.runtime.v1.linux runc<br> Default Runtime: runc<br> Init Binary: docker-init<br> containerd version: 7b11cfaabd73bb80907dd23182b9347b4245eb5d<br> runc version: v1.0.2-0-g52b36a2<br> init version: de40ad0<br> Security Options:<br>  seccomp<br>   Profile: default<br> Kernel Version: 3.10.0-1160.45.1.el7.x86_64<br> Operating System: CentOS Linux 7 (Core)<br> OSType: linux<br> Architecture: x86_64<br> CPUs: 1<br> Total Memory: 1.795GiB<br> Name: iZ8vbfaek3x3ogtpxnpnwfZ<br> ID: NQOP:KCP6:LS6G:K52A:XOQX:E7FG:FEHL:K3QX:NSLP:VY5S:TFX5:UR42<br> Docker Root Dir: /var/lib/docker<br> Debug Mode: false<br> Registry: https://index.docker.io/v1/<br> Labels:<br> Experimental: false<br> Insecure Registries:<br>  127.0.0.0/8<br> Registry Mirrors:<br>  https://qp747t9w.mirror.aliyuncs.com/<br> Live Restore Enabled: false<br><br></code></pre></td></tr></table></figure>
-<p>查看 docker 总体帮助文档</p>
-<blockquote>
-<p>docker —help</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@iZ8vbfaek3x3ogtpxnpnwfZ /]# docker --help<br><br>Usage:  docker [OPTIONS] COMMAND<br><br>A self-sufficient runtime for containers<br><br>Options:<br>      --config string      Location of client config files (default &quot;/root/.docker&quot;)<br>  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST<br>                           env var and default context set with &quot;docker context use&quot;)<br>  -D, --debug              Enable debug mode<br>  -H, --host list          Daemon socket(s) to connect to<br>  -l, --log-level string   Set the logging level (&quot;debug&quot;|&quot;info&quot;|&quot;warn&quot;|&quot;error&quot;|&quot;fatal&quot;) (default &quot;info&quot;)<br>      --tls                Use TLS; implied by --tlsverify<br>      --tlscacert string   Trust certs signed only by this CA (default &quot;/root/.docker/ca.pem&quot;)<br>      --tlscert string     Path to TLS certificate file (default &quot;/root/.docker/cert.pem&quot;)<br>      --tlskey string      Path to TLS key file (default &quot;/root/.docker/key.pem&quot;)<br>      --tlsverify          Use TLS and verify the remote<br>  -v, --version            Print version information and quit<br><br>Management Commands:<br>  app*        Docker App (Docker Inc., v0.9.1-beta3)<br><br><br>查看 docker 命令帮助文档<br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">docker 具体命令 --<span class="hljs-built_in">help</span></span><br><br>```shell<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ /]# docker ps --help<br><br>Usage:  docker ps [OPTIONS]<br><br>List containers<br><br>Options:<br>  -a, --all             Show all containers (default shows just running)<br>  -f, --filter filter   Filter output based on conditions provided<br>      --format string   Pretty-print containers using a Go template<br>  -n, --last int        Show n last created containers (includes all states) (default -1)<br>  -l, --latest          Show the latest created container (includes all states)<br>      --no-trunc        Don&#x27;t truncate output<br>  -q, --quiet           Only display container IDs<br>  -s, --size            Display total file sizes<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ /]#<br><br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Butterfly美化记录</title>
     <url>/posts/54899.html</url>
     <content><![CDATA[<blockquote>
@@ -850,6 +651,64 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </tags>
   </entry>
   <entry>
+    <title>_3主3从的`Redis集群`搭建(上)</title>
+    <url>/posts/7883.html</url>
+    <content><![CDATA[<h2 id="3主3从的Redis集群搭建-上"><a href="#3主3从的Redis集群搭建-上" class="headerlink" title="_3主3从的Redis集群搭建(上)"></a>_3主3从的<code>Redis集群</code>搭建(上)</h2><ul>
+<li>关闭防火墙，启动docker</li>
+<li>新建6个docker容器<code>docker run -d --name redis-node-6 --net host --privileged=true -v /data/redis/share/redis-node-6:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6386</code><ul>
+<li>docker run        创建并运行docker容器实例</li>
+<li>—name redis-node-6        容器名字</li>
+<li>—net host        使用宿主机的IP和端口，默认</li>
+<li>—privileged=true        获取宿主机root用户权限</li>
+<li>-v /data/redis/share/redis-node-6:/data        容器卷，宿主机地址:docker内部地址</li>
+<li>redis:6.0.8        redis镜像和版本号</li>
+<li>—cluster-enabled yes        开启redis集群</li>
+<li>—appendonly yes        开启持久化</li>
+<li>—port 6386        redis端口号</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -d --name redis-node-1 --net host --privileged=true -v /data/redis/share/redis-node-1:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6381<br>docker run -d --name redis-node-2 --net host --privileged=true -v /data/redis/share/redis-node-2:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6382<br>docker run -d --name redis-node-3 --net host --privileged=true -v /data/redis/share/redis-node-3:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6383<br>docker run -d --name redis-node-4 --net host --privileged=true -v /data/redis/share/redis-node-4:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6384<br>docker run -d --name redis-node-5 --net host --privileged=true -v /data/redis/share/redis-node-5:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6385<br>docker run -d --name redis-node-6 --net host --privileged=true -v /data/redis/share/redis-node-6:/data redis:6.0.8 --cluster-enabled yes --appendonly yes --port 6386<br></code></pre></td></tr></table></figure>
+<p>运行成功，使用<code>docker ps</code>查看</p>
+<ul>
+<li><p>进入容器redis-node-1并为6台机器构建集群关系</p>
+<ul>
+<li><p>进入一台redis进行配置<code>docker exec -it redis-node-1 bash</code></p>
+</li>
+<li><pre><code class="lang-shell">#进入后执行
+redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383 8.142.144.75:6384 8.142.144.75:6385 8.142.144.75:6386 --cluster-replicas 1
+
+ --cluster create    构建集群
+ --cluster-replicas 1    集群关联一比一的关系
+
+--cluster-replicas 1 表示为每个master创建一个slave节点
+# 注意：上面的ip为真实IP
+</code></pre>
+</li>
+</ul>
+<p>有下面的绿色ok字样显示运行成功</p>
+</li>
+</ul>
+<figure>
+    <a href="../assets/img/2022-08-25-_3主3从的Redis集群搭建（上）.assets\image-20220507145226431.png"><img src="../assets/img/2022-08-25-_3主3从的Redis集群搭建（上）.assets\image-20220507145226431.png"></a>
+</figure>
+
+<blockquote>
+<p>如果运行不成功，一直显示<code>Waiting for the cluster to join..</code>一直………………………………….，则是端口没有全部开放，防火墙也要开放端口，以阿里云为例</p>
+</blockquote>
+<p>  就是需要在安全组上面配置6381~6386的6个端口，<font color="red">还需要配置16381~16386的6个端口</font>，共12个端口都要开放，不然会一直提示等待</p>
+<ul>
+<li>一切OK的话，3主3从搭建搞定</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>_dockerfile</title>
     <url>/posts/13844.html</url>
     <content><![CDATA[<h2 id="dockerfile"><a href="#dockerfile" class="headerlink" title="_dockerfile"></a>_dockerfile</h2><h3 id="以dockerfile的方法来进行对centos的具有vim-ifconfig和jdk8的镜像"><a href="#以dockerfile的方法来进行对centos的具有vim-ifconfig和jdk8的镜像" class="headerlink" title="以dockerfile的方法来进行对centos的具有vim,ifconfig和jdk8的镜像"></a>以dockerfile的方法来进行对centos的具有vim,ifconfig和jdk8的镜像</h3><h4 id="创建myfile文件夹"><a href="#创建myfile文件夹" class="headerlink" title="创建myfile文件夹"></a>创建myfile文件夹</h4><h4 id="创建Dockerfile文件"><a href="#创建Dockerfile文件" class="headerlink" title="创建Dockerfile文件"></a>创建Dockerfile文件</h4><blockquote>
@@ -864,6 +723,147 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
 <p>碰到它还是进行删除的好</p>
 <p>使用<code>docker image ls -f dangling=true</code>查找虚悬镜像</p>
 <p>使用<code>docker image prune</code>删除镜像</p>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>_mysql主从复制docker版</title>
+    <url>/posts/42656.html</url>
+    <content><![CDATA[<h2 id="mysql主从复制docker版"><a href="#mysql主从复制docker版" class="headerlink" title="_mysql主从复制docker版"></a>_mysql主从复制docker版</h2><h3 id="安装mysql主从复制（一主一从）"><a href="#安装mysql主从复制（一主一从）" class="headerlink" title="安装mysql主从复制（一主一从）"></a>安装mysql主从复制（一主一从）</h3><p>新建主服务器容器实例3307</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -p 3307:3306 --name mysql-master -v /mydata/mysql-master/log/:/var/log/mysql -v /mydata/mysql-master/data:/var/lib/mysql -v /mydata/mysql-master/conf:/etc/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7<br></code></pre></td></tr></table></figure>
+<p>进入<code>/mydata/mysql-master/conf</code>目录下新建<code>my.cnf</code>把下面内容粘贴到<code>my.cnf</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[mysqld]<br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 设置server_id，同一局域网中需要唯一</span></span><br>server_id=101 <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 指定不需要同步的数据库名称</span></span><br>binlog-ignore-db=mysql  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 开启二进制日志功能</span></span><br>log-bin=mall-mysql-bin  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 设置二进制日志使用内存大小（事务）</span></span><br>binlog_cache_size=1M  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 设置使用的二进制日志格式（mixed,statement,row）</span></span><br>binlog_format=mixed  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 二进制日志过期清理时间。默认值为0，表示不自动清理。</span></span><br>expire_logs_days=7  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 跳过主从复制中遇到的所有错误或指定类型的错误，避免slave端复制中断。</span></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 如：1062错误是指一些主键重复，1032错误是因为主从数据库数据不一致</span></span><br>slave_skip_errors=1062<br></code></pre></td></tr></table></figure>
+<p>修改完配置后重启master容器</p>
+<p>master容器实例内创建数据同步用户</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">建立一个用户</span><br>CREATE USER &#x27;slave&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27;;<br><span class="hljs-meta prompt_"># </span><span class="language-bash">对新建的用户进行授权</span><br>GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO &#x27;slave&#x27;@&#x27;%&#x27;;<br></code></pre></td></tr></table></figure>
+<figure>
+    <a href="../assets/img/2022-08-25-_mysql主从复制docker版.assets/图像2.png"><img src="../assets/img/2022-08-25-_mysql主从复制docker版.assets/图像2.png"></a>
+</figure>
+
+
+<p>新建从服务器实例3308</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -p 3308:3306 --name mysql-slave -v /mydata/mysql-slave/log/:/var/log/mysql -v /mydata/mysql-slave/data:/var/lib/mysql -v /mydata/mysql-slave/conf:/etc/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7<br></code></pre></td></tr></table></figure>
+<p>进入/mydata/mysql-slave/conf目录下新建my.cnf</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 设置使用的二进制日志格式（mixed,statement,row）</span></span><br>binlog_format=mixed  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 二进制日志过期清理时间。默认值为0，表示不自动清理。</span></span><br>expire_logs_days=7  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 跳过主从复制中遇到的所有错误或指定类型的错误，避免slave端复制中断。</span></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># 如：1062错误是指一些主键重复，1032错误是因为主从数据库数据不一致</span></span><br>slave_skip_errors=1062  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># relay_log配置中继日志</span></span><br>relay_log=mall-mysql-relay-bin  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># log_slave_updates表示slave将复制事件写进自己的二进制日志</span></span><br>log_slave_updates=1  <br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment"># slave设置为只读（具有super权限的用户除外）</span></span><br>read_only=1<br></code></pre></td></tr></table></figure>
+<p>重启从机实例<code>docker restart mysql-slave</code></p>
+<p>在主数据库中查看主从同步状态<code>show master status;</code></p>
+<p>进入mysql-slave从机容器</p>
+<p>在从数据库中配置主从复制<code>change master to master_host=&#39;宿主机ip&#39;, master_user=&#39;slave&#39;, master_password=&#39;123456&#39;, master_port=3307, master_log_file=&#39;mall-mysql-bin.000001&#39;, master_log_pos=617, master_connect_retry=30;</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">说明：</span><br>master_host：主数据库的IP地址；<br>master_port：主数据库的运行端口；<br>master_user：在主数据库创建的用于同步数据的用户账号；<br>master_password：在主数据库创建的用于同步数据的用户密码；<br>master_log_file：指定从数据库要复制数据的日志文件，通过查看主数据的状态，获取File参数；<br>master_log_pos：指定从数据库从哪个位置开始复制数据，通过查看主数据的状态，获取Position参数；<br>master_connect_retry：连接失败重试的时间间隔，单位为秒。<br></code></pre></td></tr></table></figure>
+<p>在从数据库中查看主从同步状态<code>show slave status \G;</code></p>
+<p>在从数据库中开启主从同步<code>start slave</code></p>
+<p>查看从数据库状态发现已经同步</p>
+<figure>
+    <a href="../assets/img/2022-08-25-_mysql主从复制docker版.assets\图像.png"><img src="../assets/img/2022-08-25-_mysql主从复制docker版.assets\图像.png"></a>
+</figure>
+
+
+<p>主从复制测试</p>
+<p>主机创建数据库，创建表，插入数据，搜索表的数据</p>
+<p>从机直接搜索标的数据</p>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>_主从容错切换迁移</title>
+    <url>/posts/58353.html</url>
+    <content><![CDATA[<h2 id="主从容错切换迁移"><a href="#主从容错切换迁移" class="headerlink" title="_主从容错切换迁移"></a>_主从容错切换迁移</h2><h4 id="进入redis集群"><a href="#进入redis集群" class="headerlink" title="进入redis集群"></a>进入redis集群</h4><blockquote>
+<p>注意：进入集群环境后，不能使用单机版的<code>redis-cli -p 6381</code></p>
+</blockquote>
+<p>因为这样会在增加数据时有<code>error</code>报错出现</p>
+<figure>
+    <a href="../assets/img/2022-08-25-_主从容错切换迁移.assets\image-20220509103958088.png"><img src="../assets/img/2022-08-25-_主从容错切换迁移.assets\image-20220509103958088.png"></a>
+</figure>
+
+
+<p>使用<code>set k1 v1</code>错误是因为1号主机里面的编号是0到5460，超过了这个范围就会报错</p>
+<blockquote>
+<p>正确进入的方法<code>redis-cli -p 6381 -c</code></p>
+<p>-c 的作用是优化路由</p>
+</blockquote>
+<figure>
+    <a href="../assets/img/2022-08-25-_主从容错切换迁移.assets\image-20220509104855415.png"><img src="../assets/img/2022-08-25-_主从容错切换迁移.assets\image-20220509104855415.png"></a>
+</figure>
+
+
+<font color="green">注：FLUSHALL：作用是清除之前添加的记录</font>
+
+<h4 id="集群检查"><a href="#集群检查" class="headerlink" title="集群检查"></a>集群检查</h4><blockquote>
+<p>redis-cli —cluster check 8.142.144.75:6381</p>
+</blockquote>
+<font color="green">注：可以进入任意一台主机</font>
+
+
+<figure>
+    <a href="../assets/img/2022-08-25-_主从容错切换迁移.assets\image-20220509135040693.png"><img src="../assets/img/2022-08-25-_主从容错切换迁移.assets\image-20220509135040693.png"></a>
+</figure>
+
+
+<h4 id="主从容错切换迁移-1"><a href="#主从容错切换迁移-1" class="headerlink" title="主从容错切换迁移"></a>主从容错切换迁移</h4><blockquote>
+<p>主机宕机，从机自动切换成主机</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker 帮助启动类命令（一）</title>
+    <url>/posts/16766.html</url>
+    <content><![CDATA[<h2 id="docker-帮助启动类命令（一）"><a href="#docker-帮助启动类命令（一）" class="headerlink" title="docker 帮助启动类命令（一）"></a>docker 帮助启动类命令（一）</h2><p>启动docker</p>
+<blockquote>
+<p>systemctl start docker</p>
+</blockquote>
+<p>停止docker</p>
+<blockquote>
+<p>systemctl stop docker</p>
+</blockquote>
+<p>查看docker状态</p>
+<blockquote>
+<p>systemctl status docker</p>
+</blockquote>
+<p>重启 docker，没有任何提示说明启动成功</p>
+<blockquote>
+<p>systemctl restart docker</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker 帮助启动类命令（二）</title>
+    <url>/posts/53508.html</url>
+    <content><![CDATA[<h2 id="docker-帮助启动类命令（二）"><a href="#docker-帮助启动类命令（二）" class="headerlink" title="docker 帮助启动类命令（二）"></a>docker 帮助启动类命令（二）</h2><p>docker 开机启动</p>
+<blockquote>
+<p>systemctl enable docker </p>
+</blockquote>
+<p>查看 docker 概要信息</p>
+<blockquote>
+<p>docker info</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@iZ8vbfaek3x3ogtpxnpnwfZ /]# docker info<br>Client:<br> Context:    default<br> Debug Mode: false<br> Plugins:<br>  app: Docker App (Docker Inc., v0.9.1-beta3)<br>  buildx: Docker Buildx (Docker Inc., v0.7.1-docker)<br>  scan: Docker Scan (Docker Inc., v0.12.0)<br><br>Server:<br> Containers: 6<br>  Running: 0<br>  Paused: 0<br>  Stopped: 6<br> Images: 5<br> Server Version: 20.10.12<br> Storage Driver: overlay2<br>  Backing Filesystem: extfs<br>  Supports d_type: true<br>  Native Overlay Diff: true<br>  userxattr: false<br> Logging Driver: json-file<br> Cgroup Driver: cgroupfs<br> Cgroup Version: 1<br> Plugins:<br>  Volume: local<br>  Network: bridge host ipvlan macvlan null overlay<br>  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog<br> Swarm: inactive<br> Runtimes: io.containerd.runc.v2 io.containerd.runtime.v1.linux runc<br> Default Runtime: runc<br> Init Binary: docker-init<br> containerd version: 7b11cfaabd73bb80907dd23182b9347b4245eb5d<br> runc version: v1.0.2-0-g52b36a2<br> init version: de40ad0<br> Security Options:<br>  seccomp<br>   Profile: default<br> Kernel Version: 3.10.0-1160.45.1.el7.x86_64<br> Operating System: CentOS Linux 7 (Core)<br> OSType: linux<br> Architecture: x86_64<br> CPUs: 1<br> Total Memory: 1.795GiB<br> Name: iZ8vbfaek3x3ogtpxnpnwfZ<br> ID: NQOP:KCP6:LS6G:K52A:XOQX:E7FG:FEHL:K3QX:NSLP:VY5S:TFX5:UR42<br> Docker Root Dir: /var/lib/docker<br> Debug Mode: false<br> Registry: https://index.docker.io/v1/<br> Labels:<br> Experimental: false<br> Insecure Registries:<br>  127.0.0.0/8<br> Registry Mirrors:<br>  https://qp747t9w.mirror.aliyuncs.com/<br> Live Restore Enabled: false<br><br></code></pre></td></tr></table></figure>
+<p>查看 docker 总体帮助文档</p>
+<blockquote>
+<p>docker —help</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@iZ8vbfaek3x3ogtpxnpnwfZ /]# docker --help<br><br>Usage:  docker [OPTIONS] COMMAND<br><br>A self-sufficient runtime for containers<br><br>Options:<br>      --config string      Location of client config files (default &quot;/root/.docker&quot;)<br>  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST<br>                           env var and default context set with &quot;docker context use&quot;)<br>  -D, --debug              Enable debug mode<br>  -H, --host list          Daemon socket(s) to connect to<br>  -l, --log-level string   Set the logging level (&quot;debug&quot;|&quot;info&quot;|&quot;warn&quot;|&quot;error&quot;|&quot;fatal&quot;) (default &quot;info&quot;)<br>      --tls                Use TLS; implied by --tlsverify<br>      --tlscacert string   Trust certs signed only by this CA (default &quot;/root/.docker/ca.pem&quot;)<br>      --tlscert string     Path to TLS certificate file (default &quot;/root/.docker/cert.pem&quot;)<br>      --tlskey string      Path to TLS key file (default &quot;/root/.docker/key.pem&quot;)<br>      --tlsverify          Use TLS and verify the remote<br>  -v, --version            Print version information and quit<br><br>Management Commands:<br>  app*        Docker App (Docker Inc., v0.9.1-beta3)<br><br><br>查看 docker 命令帮助文档<br><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">docker 具体命令 --<span class="hljs-built_in">help</span></span><br><br>```shell<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ /]# docker ps --help<br><br>Usage:  docker ps [OPTIONS]<br><br>List containers<br><br>Options:<br>  -a, --all             Show all containers (default shows just running)<br>  -f, --filter filter   Filter output based on conditions provided<br>      --format string   Pretty-print containers using a Go template<br>  -n, --last int        Show n last created containers (includes all states) (default -1)<br>  -l, --latest          Show the latest created container (includes all states)<br>      --no-trunc        Don&#x27;t truncate output<br>  -q, --quiet           Only display container IDs<br>  -s, --size            Display total file sizes<br>[root@iZ8vbfaek3x3ogtpxnpnwfZ /]#<br><br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>工具教程</category>
@@ -1096,6 +1096,23 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </tags>
   </entry>
   <entry>
+    <title>使用docker安装常用软件：redis</title>
+    <url>/posts/32161.html</url>
+    <content><![CDATA[<h2 id="使用docker安装常用软件：redis"><a href="#使用docker安装常用软件：redis" class="headerlink" title="使用docker安装常用软件：redis"></a>使用docker安装常用软件：redis</h2><p>使用<code>docker pull redis:6.0.8</code>拉取redis:6.0.8镜像</p>
+<p><strong>创建容器</strong></p>
+<blockquote>
+<p>容器卷要加入<code>--privileged=true</code></p>
+</blockquote>
+<p>在宿主机下新建目录<code>mkdir -p /app/redis</code></p>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用docker安装常用软件：tomcat</title>
     <url>/posts/50699.html</url>
     <content><![CDATA[<h2 id="使用docker安装常用软件：tomcat"><a href="#使用docker安装常用软件：tomcat" class="headerlink" title="使用docker安装常用软件：tomcat"></a>使用docker安装常用软件：tomcat</h2><h4 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h4><p>首先把tomcat在镜像源中<code>pull</code>下来，使用<code>docker images</code> 查看镜像</p>
@@ -1126,23 +1143,6 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
 <p>docker pull billygoo/tomcat8-jdk8</p>
 <p>docker run -d -p 8080:8080 —name tomcat8 billygoo/tomcat8-jdk8</p>
 </blockquote>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用docker安装常用软件：redis</title>
-    <url>/posts/32161.html</url>
-    <content><![CDATA[<h2 id="使用docker安装常用软件：redis"><a href="#使用docker安装常用软件：redis" class="headerlink" title="使用docker安装常用软件：redis"></a>使用docker安装常用软件：redis</h2><p>使用<code>docker pull redis:6.0.8</code>拉取redis:6.0.8镜像</p>
-<p><strong>创建容器</strong></p>
-<blockquote>
-<p>容器卷要加入<code>--privileged=true</code></p>
-</blockquote>
-<p>在宿主机下新建目录<code>mkdir -p /app/redis</code></p>
 ]]></content>
       <categories>
         <category>工具教程</category>
@@ -1450,93 +1450,6 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </categories>
       <tags>
         <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git提示Timed out的解决办法</title>
-    <url>/posts/53812.html</url>
-    <content><![CDATA[<h4 id="报错代码"><a href="#报错代码" class="headerlink" title="报错代码"></a>报错代码</h4><p>运行git代码会提示Timed out错误</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">使用git，会发生报错：Failed to connect to github.com port 443 after 21098 ms: Timed out<br></code></pre></td></tr></table></figure>
-<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>设置代理</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">git config --global https.proxy<br></code></pre></td></tr></table></figure>
-<p>取消代理</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">git config --global --unset https.proxy<br></code></pre></td></tr></table></figure>
-<p>然后输入git 命令使用</p>
-]]></content>
-      <categories>
-        <category>经验分享</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用pip install报错的解决办法</title>
-    <url>/posts/4851.html</url>
-    <content><![CDATA[<h2 id="报错提示"><a href="#报错提示" class="headerlink" title="报错提示"></a>报错提示</h2><p>今天使用PyCharm下载一个模块<code>pip.exe install locust</code>，有错误提示</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">https://visualstudio.microsoft.com/visual-cpp-build-tools/<br>  [end of output]<br>  <br>  note: This error originates <span class="hljs-keyword">from</span> a subprocess, <span class="hljs-keyword">and</span> <span class="hljs-keyword">is</span> likely <span class="hljs-keyword">not</span> a problem <span class="hljs-keyword">with</span> pip.<br>  // 报错位置<br>  ERROR: Failed building wheel <span class="hljs-keyword">for</span> psutil<br><br>ERROR: Could <span class="hljs-keyword">not</span> build wheels <span class="hljs-keyword">for</span> psutil, which <span class="hljs-keyword">is</span> required to install pyproject.toml-based projects<br>WARNING: Ignoring invalid distribution -ip (d:\work software\python3<span class="hljs-number">.8</span>\lib\site-packages)<br>WARNING: Ignoring invalid distribution -ip (d:\work software\python3<span class="hljs-number">.8</span>\lib\site-packages)<br>WARNING: Ignoring invalid distribution -ip (d:\work software\python3<span class="hljs-number">.8</span>\lib\site-packages)<br></code></pre></td></tr></table></figure>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><blockquote>
-<p>缺少对应的<code>whl</code>文件</p>
-</blockquote>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>碰到了这个错误<code>ERROR: Failed building wheel for psutil</code>，就需要下载<code>psutil.whl</code></p>
-<p>在<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#_pandas">下载网站</a>点击进入网站</p>
-<p>下载<code>psutil-5.9.0-cp38-cp38-win_amd64.whl</code>文件</p>
-<p>然后使用（pip install 文件的绝对路径）进行安装，然后使用<code>pip.exe install locust</code>正常安装</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><br>pip.exe install D:\Appium\psutil-<span class="hljs-number">5.9</span><span class="hljs-number">.0</span>-cp38-cp38-win_amd64.whl<br><br>pip.exe install locust<br><br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>经验分享</category>
-      </categories>
-      <tags>
-        <tag>error</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac提示安装包损坏</title>
-    <url>/posts/408340008.html</url>
-    <content><![CDATA[<h3 id="Mac-提示文件已损坏，您应该将它移到废纸篓"><a href="#Mac-提示文件已损坏，您应该将它移到废纸篓" class="headerlink" title="Mac 提示文件已损坏，您应该将它移到废纸篓"></a>Mac 提示文件已损坏，您应该将它移到废纸篓</h3><p>解决办法：</p>
-<p>在终端输入</p>
-<p><code>sudo xattr -d com.apple.quarantine /Applications/PicGo.app</code></p>
-<p><code>/</code>后面是安装路径</p>
-<p>然后输入密码</p>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>mac</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>端口占用怎么查询是哪个软件</title>
-    <url>/posts/643624526.html</url>
-    <content><![CDATA[<h2 id="当提示端口占用"><a href="#当提示端口占用" class="headerlink" title="当提示端口占用"></a>当提示端口占用</h2><p>提示端口占用时，需要查询进程，并进行删除，但是有些进程不能删除，我们需要查一下这个端口属于哪个软件</p>
-<ul>
-<li><code>netstat -ano|findstr 8000</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">TCP    127.0.0.1:8000         0.0.0.0:0              LISTENING       18480<br></code></pre></td></tr></table></figure>
-<p>查询<strong>8000</strong>端口,获得 <strong>PID</strong></p>
-<ul>
-<li><code>taskkill /pid 18480 /F</code></li>
-</ul>
-<p>根据<strong>PID</strong>杀死进程</p>
-<ul>
-<li><code>tasklist | findstr 18480</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">DHPlayer.exe                 18480 Console                    2     19,900 K<br></code></pre></td></tr></table></figure>
-<p>根据<strong>PID</strong>查询所属软件</p>
-<ul>
-<li><code>wmic process where name=&quot;DHPlayer.exe&quot; get executablepath</code></li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">ExecutablePath<br>C:\Program Files (x86)\DHPlayer\DHPlayer.exe<br></code></pre></td></tr></table></figure>
-<p>根据<strong>exe名称</strong>查询软件路径</p>
-<p>然后根据路径判断软件的端口要不要删除</p>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>win</tag>
       </tags>
   </entry>
   <entry>
@@ -1896,6 +1809,142 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </tags>
   </entry>
   <entry>
+    <title>git提示Timed out的解决办法</title>
+    <url>/posts/53812.html</url>
+    <content><![CDATA[<h4 id="报错代码"><a href="#报错代码" class="headerlink" title="报错代码"></a>报错代码</h4><p>运行git代码会提示Timed out错误</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">使用git，会发生报错：Failed to connect to github.com port 443 after 21098 ms: Timed out<br></code></pre></td></tr></table></figure>
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>设置代理</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">git config --global https.proxy<br></code></pre></td></tr></table></figure>
+<p>取消代理</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs git">git config --global --unset https.proxy<br></code></pre></td></tr></table></figure>
+<p>然后输入git 命令使用</p>
+]]></content>
+      <categories>
+        <category>经验分享</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用pip install报错的解决办法</title>
+    <url>/posts/4851.html</url>
+    <content><![CDATA[<h2 id="报错提示"><a href="#报错提示" class="headerlink" title="报错提示"></a>报错提示</h2><p>今天使用PyCharm下载一个模块<code>pip.exe install locust</code>，有错误提示</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">https://visualstudio.microsoft.com/visual-cpp-build-tools/<br>  [end of output]<br>  <br>  note: This error originates <span class="hljs-keyword">from</span> a subprocess, <span class="hljs-keyword">and</span> <span class="hljs-keyword">is</span> likely <span class="hljs-keyword">not</span> a problem <span class="hljs-keyword">with</span> pip.<br>  // 报错位置<br>  ERROR: Failed building wheel <span class="hljs-keyword">for</span> psutil<br><br>ERROR: Could <span class="hljs-keyword">not</span> build wheels <span class="hljs-keyword">for</span> psutil, which <span class="hljs-keyword">is</span> required to install pyproject.toml-based projects<br>WARNING: Ignoring invalid distribution -ip (d:\work software\python3<span class="hljs-number">.8</span>\lib\site-packages)<br>WARNING: Ignoring invalid distribution -ip (d:\work software\python3<span class="hljs-number">.8</span>\lib\site-packages)<br>WARNING: Ignoring invalid distribution -ip (d:\work software\python3<span class="hljs-number">.8</span>\lib\site-packages)<br></code></pre></td></tr></table></figure>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><blockquote>
+<p>缺少对应的<code>whl</code>文件</p>
+</blockquote>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>碰到了这个错误<code>ERROR: Failed building wheel for psutil</code>，就需要下载<code>psutil.whl</code></p>
+<p>在<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#_pandas">下载网站</a>点击进入网站</p>
+<p>下载<code>psutil-5.9.0-cp38-cp38-win_amd64.whl</code>文件</p>
+<p>然后使用（pip install 文件的绝对路径）进行安装，然后使用<code>pip.exe install locust</code>正常安装</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><br>pip.exe install D:\Appium\psutil-<span class="hljs-number">5.9</span><span class="hljs-number">.0</span>-cp38-cp38-win_amd64.whl<br><br>pip.exe install locust<br><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>经验分享</category>
+      </categories>
+      <tags>
+        <tag>error</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac提示安装包损坏</title>
+    <url>/posts/408340008.html</url>
+    <content><![CDATA[<h3 id="Mac-提示文件已损坏，您应该将它移到废纸篓"><a href="#Mac-提示文件已损坏，您应该将它移到废纸篓" class="headerlink" title="Mac 提示文件已损坏，您应该将它移到废纸篓"></a>Mac 提示文件已损坏，您应该将它移到废纸篓</h3><p>解决办法：</p>
+<p>在终端输入</p>
+<p><code>sudo xattr -d com.apple.quarantine /Applications/PicGo.app</code></p>
+<p><code>/</code>后面是安装路径</p>
+<p>然后输入密码</p>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>端口占用怎么查询是哪个软件</title>
+    <url>/posts/643624526.html</url>
+    <content><![CDATA[<h2 id="当提示端口占用"><a href="#当提示端口占用" class="headerlink" title="当提示端口占用"></a>当提示端口占用</h2><p>提示端口占用时，需要查询进程，并进行删除，但是有些进程不能删除，我们需要查一下这个端口属于哪个软件</p>
+<ul>
+<li><code>netstat -ano|findstr 8000</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">TCP    127.0.0.1:8000         0.0.0.0:0              LISTENING       18480<br></code></pre></td></tr></table></figure>
+<p>查询<strong>8000</strong>端口,获得 <strong>PID</strong></p>
+<ul>
+<li><code>taskkill /pid 18480 /F</code></li>
+</ul>
+<p>根据<strong>PID</strong>杀死进程</p>
+<ul>
+<li><code>tasklist | findstr 18480</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">DHPlayer.exe                 18480 Console                    2     19,900 K<br></code></pre></td></tr></table></figure>
+<p>根据<strong>PID</strong>查询所属软件</p>
+<ul>
+<li><code>wmic process where name=&quot;DHPlayer.exe&quot; get executablepath</code></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">ExecutablePath<br>C:\Program Files (x86)\DHPlayer\DHPlayer.exe<br></code></pre></td></tr></table></figure>
+<p>根据<strong>exe名称</strong>查询软件路径</p>
+<p>然后根据路径判断软件的端口要不要删除</p>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>win</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用moko编写测试接口</title>
+    <url>/posts/1817691161.html</url>
+    <content><![CDATA[<h2 id="编写规则"><a href="#编写规则" class="headerlink" title="编写规则"></a>编写规则</h2><ul>
+<li><p>以<code>[]</code>包裹着以<code>&#123;&#125;</code>包起来的接口脚本</p>
+</li>
+<li><p><code>description</code>：接口简介</p>
+</li>
+<li><p><code>request</code>：使用<code>&#123;&#125;</code>包含接口的请求信息</p>
+<ul>
+<li><code>uri</code>：接口的地址名称</li>
+<li><code>method</code>：请求方法</li>
+<li><code>queries</code>：get请求参数</li>
+<li><code>forms</code>：post请求参数</li>
+<li><code>headers</code>：请求头信息</li>
+</ul>
+</li>
+<li><p><code>response</code>：返回的数据，使用<code>&#123;&#125;</code></p>
+<ul>
+<li><code>text</code>：返回的文字数据</li>
+<li><code>cookies</code>：返回的cookie信息</li>
+<li><code>status</code>：返回的响应码</li>
+</ul>
+</li>
+</ul>
+<p><strong>举个栗子demo</strong></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">[</span><br>  <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是我们的第一个mock栗子&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/demo&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;第一个mock响应demo&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+<p><strong>get请求demo</strong><br><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">[</span><br>  <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;接口的get请求&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/#/test/xml&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;get&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;get请求接口&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure></p>
+<h2 id="使用moko编写Get和Post测试接口"><a href="#使用moko编写Get和Post测试接口" class="headerlink" title="使用moko编写Get和Post测试接口"></a>使用moko编写Get和Post测试接口</h2><p><strong>上一节已经写了规则，这次直接来编写Get和Post请求</strong></p>
+<p><strong>模拟一个没有参数的get请求</strong><br><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;模拟一个没有参数的get请求&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/getdemo&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;get&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是一个没有参数的get请求&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure><br><strong>模拟一个带参数的请求</strong><br><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;模拟一个带参数的请求&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;getwithparam&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;get&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;queries&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;胡汉三&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;age&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;18&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;我胡汉三又回来了！！！！！&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></p>
+<p><strong>模拟一个Post请求</strong><br><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;模拟一个Post请求&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/postdemo&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;post&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是我的第一个mosk的post请求&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></p>
+<p><strong>这是一个带参数的post请求</strong><br><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是一个带参数的post请求&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/postwithparam&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;post&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;forms&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;胡汉三&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;sex&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;男人&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;我胡汉三带着参数来了！！！！&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></p>
+<h2 id="使用moko编写包含cookie信息的测试接口"><a href="#使用moko编写包含cookie信息的测试接口" class="headerlink" title="使用moko编写包含cookie信息的测试接口"></a>使用moko编写包含cookie信息的测试接口</h2><h3 id="这是一个会返回cookie的get请求"><a href="#这是一个会返回cookie的get请求" class="headerlink" title="这是一个会返回cookie的get请求"></a>这是一个会返回cookie的get请求</h3><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是一个会返回cookie的get请求&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/getCookies&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;get&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;cookies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;login&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;true&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;恭喜你获得cookies信息成功&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">200</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;msg&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;成功&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<h4 id="这是一个携带cookies信息的get请求"><a href="#这是一个携带cookies信息的get请求" class="headerlink" title="这是一个携带cookies信息的get请求"></a>这是一个携带cookies信息的get请求</h4><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是一个带cookies信息的get请求&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/get/with/cookies&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;get&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;cookies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;login&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;true&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是一个需要携带cookies信息才能访问的get请求&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<h4 id="这是一个携带cookies信息的post请求"><a href="#这是一个携带cookies信息的post请求" class="headerlink" title="这是一个携带cookies信息的post请求"></a>这是一个携带cookies信息的post请求</h4><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是一个带cookies信息的post请求&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/post/with/cookies&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;post&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;cookies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;login&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;true&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;json&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;huhansan&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;age&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;18&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">200</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;json&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;huhansan&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;success&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<h2 id="重定向的测试接口"><a href="#重定向的测试接口" class="headerlink" title="重定向的测试接口"></a>重定向的测试接口</h2><ul>
+<li>使用了<code>redirectTo</code>：目标地址</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">[</span><br>  <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;重定向到百度&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/redirect&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;redirectTo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;http://www.baidu.com&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;重定向到自己的网页上&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/redirect/topath&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;redirectTo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/redirect/new&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是被重定到的请求&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/redirect/new&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;重定向成功了&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+<h2 id="下载jar包"><a href="#下载jar包" class="headerlink" title="下载jar包"></a>下载jar包</h2><p>点击<a href="https://repo1.maven.org/maven2/com/github/dreamhead/moco-runner/">moke</a>选择版本进行下载，我下载的的是<code>moco-runner-0.11.0-standalone.jar</code></p>
+<h2 id="使用命令启动测试脚本"><a href="#使用命令启动测试脚本" class="headerlink" title="使用命令启动测试脚本"></a>使用命令启动测试脚本</h2><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json">java -jar jar包的存放路径 http -p 端口 -c json文件路径<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用jmeter录制压测</title>
     <url>/posts/52845.html</url>
     <content><![CDATA[<h3 id="业务"><a href="#业务" class="headerlink" title="业务"></a>业务</h3><ul>
@@ -2054,6 +2103,38 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </tags>
   </entry>
   <entry>
+    <title>Jmeter之json数据提取和参数传递</title>
+    <url>/posts/26691.html</url>
+    <content><![CDATA[<h2 id="安装组件JSON-Extractor"><a href="#安装组件JSON-Extractor" class="headerlink" title="安装组件JSON Extractor"></a>安装组件JSON Extractor</h2><ul>
+<li>右键<code>Http Request</code></li>
+<li>点击<code>Add -&gt; Post Processors -&gt; JSON Extractor</code></li>
+</ul>
+<p>组件安装成功</p>
+<h4 id="组件配置"><a href="#组件配置" class="headerlink" title="组件配置"></a>组件配置</h4><ul>
+<li><code>Names of created variables</code>  :  参数变量名称，提取出来的json使用这个变量</li>
+<li><code>Json Path expressions</code>  :  JSON提取的正则 比如：<code>$.access_token</code>这个是提取response里面的token</li>
+<li><code>Match NO.(0 for Random)</code>:这个是写提取出json的第几条, 比如使用正则能匹配多条，使用这个输入数字就可以匹配对应的</li>
+</ul>
+<h5 id="引用json变量"><a href="#引用json变量" class="headerlink" title="引用json变量"></a>引用json变量</h5><ul>
+<li>Jmeter中引用变量的方法<code>$&#123;变量名&#125;</code></li>
+</ul>
+<h4 id="调试脚本-Debug-Sampler"><a href="#调试脚本-Debug-Sampler" class="headerlink" title="调试脚本 Debug Sampler"></a>调试脚本 Debug Sampler</h4><blockquote>
+<p>帮助检查变量值，调试脚本</p>
+</blockquote>
+<ul>
+<li>右键<code>Thread Group</code></li>
+<li>点击<code>Add -&gt; Sampler -&gt; Debug Sampler</code></li>
+</ul>
+<p>注意：把Debug放到所有请求的最底下，运行的后可以查看变量参数，方便调试</p>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>jmeter</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Jmeter之全局参数设置和csv数据导入</title>
     <url>/posts/49262.html</url>
     <content><![CDATA[<h4 id="全局参数设置"><a href="#全局参数设置" class="headerlink" title="全局参数设置"></a>全局参数设置</h4><h5 id="添加组件"><a href="#添加组件" class="headerlink" title="添加组件"></a>添加组件</h5><ul>
@@ -2092,38 +2173,6 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
 <li><code>Sharinng mode</code>：共享模式</li>
 </ul>
 <font color='red' font-size='30px'>注意：把请求的参数修改为：`${变量}`</font>]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>jmeter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jmeter之json数据提取和参数传递</title>
-    <url>/posts/26691.html</url>
-    <content><![CDATA[<h2 id="安装组件JSON-Extractor"><a href="#安装组件JSON-Extractor" class="headerlink" title="安装组件JSON Extractor"></a>安装组件JSON Extractor</h2><ul>
-<li>右键<code>Http Request</code></li>
-<li>点击<code>Add -&gt; Post Processors -&gt; JSON Extractor</code></li>
-</ul>
-<p>组件安装成功</p>
-<h4 id="组件配置"><a href="#组件配置" class="headerlink" title="组件配置"></a>组件配置</h4><ul>
-<li><code>Names of created variables</code>  :  参数变量名称，提取出来的json使用这个变量</li>
-<li><code>Json Path expressions</code>  :  JSON提取的正则 比如：<code>$.access_token</code>这个是提取response里面的token</li>
-<li><code>Match NO.(0 for Random)</code>:这个是写提取出json的第几条, 比如使用正则能匹配多条，使用这个输入数字就可以匹配对应的</li>
-</ul>
-<h5 id="引用json变量"><a href="#引用json变量" class="headerlink" title="引用json变量"></a>引用json变量</h5><ul>
-<li>Jmeter中引用变量的方法<code>$&#123;变量名&#125;</code></li>
-</ul>
-<h4 id="调试脚本-Debug-Sampler"><a href="#调试脚本-Debug-Sampler" class="headerlink" title="调试脚本 Debug Sampler"></a>调试脚本 Debug Sampler</h4><blockquote>
-<p>帮助检查变量值，调试脚本</p>
-</blockquote>
-<ul>
-<li>右键<code>Thread Group</code></li>
-<li>点击<code>Add -&gt; Sampler -&gt; Debug Sampler</code></li>
-</ul>
-<p>注意：把Debug放到所有请求的最底下，运行的后可以查看变量参数，方便调试</p>
-]]></content>
       <categories>
         <category>工具教程</category>
       </categories>
@@ -2294,29 +2343,6 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </tags>
   </entry>
   <entry>
-    <title>Constant Throughput Timer定时器</title>
-    <url>/posts/48851.html</url>
-    <content><![CDATA[<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>限制整个运行过程中的生成的吞吐量不要超过某一个值，防止压死系统</p>
-<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><ul>
-<li>Target throughput(in samples per minute)：目标吞吐量，指的是每分钟发送的请求数，对应测试要求的<code>20 QPS</code>，这里应该输入1200</li>
-<li>Calculate Throughput based on:有5个选项<ul>
-<li><code>This Thread only</code>:控制每个线程的吞吐量，这个模式的作用是:<code>总的吞吐量=Target throughput * 线程的数量</code></li>
-<li><code>All active threads</code>:设置的<strong><em>Target throughput</em></strong>将分配在每个活跃线程上，每个活跃线程在上一次运行结束后等待合理时间后再次运行。活跃线程指的是同一时刻同时运行的线程</li>
-<li><code>All active threads in current thread group</code>:设置的`<strong><em>Target throughput</em></strong>将分配在当前线程祖的每一个活跃线程上，当测试计划只有一个线程组，这个模式作用和All active threads一样</li>
-<li><code>All active threads（shared）</code>：与All active threads选项基本一致，唯一区别是，每一个活跃线程都会在所有活跃线程上一次运行结束后等待合理时间再次运行</li>
-<li><code>All active threads in current thread group（shared）</code>:与All active threads in current thread group选项基本一致，唯一区别是，每个活跃线程都会在所有活跃线程的上一次运行结束等待合理的时间后再次运行</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>jmeter</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Gaussian Random Timer定时器</title>
     <url>/posts/40953.html</url>
     <content><![CDATA[<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>生成随机等待时间</p>
@@ -2354,6 +2380,29 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </tags>
   </entry>
   <entry>
+    <title>Constant Throughput Timer定时器</title>
+    <url>/posts/48851.html</url>
+    <content><![CDATA[<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>限制整个运行过程中的生成的吞吐量不要超过某一个值，防止压死系统</p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><ul>
+<li>Target throughput(in samples per minute)：目标吞吐量，指的是每分钟发送的请求数，对应测试要求的<code>20 QPS</code>，这里应该输入1200</li>
+<li>Calculate Throughput based on:有5个选项<ul>
+<li><code>This Thread only</code>:控制每个线程的吞吐量，这个模式的作用是:<code>总的吞吐量=Target throughput * 线程的数量</code></li>
+<li><code>All active threads</code>:设置的<strong><em>Target throughput</em></strong>将分配在每个活跃线程上，每个活跃线程在上一次运行结束后等待合理时间后再次运行。活跃线程指的是同一时刻同时运行的线程</li>
+<li><code>All active threads in current thread group</code>:设置的`<strong><em>Target throughput</em></strong>将分配在当前线程祖的每一个活跃线程上，当测试计划只有一个线程组，这个模式作用和All active threads一样</li>
+<li><code>All active threads（shared）</code>：与All active threads选项基本一致，唯一区别是，每一个活跃线程都会在所有活跃线程上一次运行结束后等待合理时间再次运行</li>
+<li><code>All active threads in current thread group（shared）</code>:与All active threads in current thread group选项基本一致，唯一区别是，每个活跃线程都会在所有活跃线程的上一次运行结束等待合理的时间后再次运行</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具教程</category>
+      </categories>
+      <tags>
+        <tag>jmeter</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Groovy编写方法</title>
     <url>/posts/22551.html</url>
     <content><![CDATA[<h2 id="关键字："><a href="#关键字：" class="headerlink" title="关键字："></a>关键字：</h2><ul>
@@ -2382,55 +2431,6 @@ redis-cli --cluster create 8.142.144.75:6381 8.142.144.75:6382 8.142.144.75:6383
       </categories>
       <tags>
         <tag>jmeter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用moko编写测试接口</title>
-    <url>/posts/1817691161.html</url>
-    <content><![CDATA[<h2 id="编写规则"><a href="#编写规则" class="headerlink" title="编写规则"></a>编写规则</h2><ul>
-<li><p>以<code>[]</code>包裹着以<code>&#123;&#125;</code>包起来的接口脚本</p>
-</li>
-<li><p><code>description</code>：接口简介</p>
-</li>
-<li><p><code>request</code>：使用<code>&#123;&#125;</code>包含接口的请求信息</p>
-<ul>
-<li><code>uri</code>：接口的地址名称</li>
-<li><code>method</code>：请求方法</li>
-<li><code>queries</code>：get请求参数</li>
-<li><code>forms</code>：post请求参数</li>
-<li><code>headers</code>：请求头信息</li>
-</ul>
-</li>
-<li><p><code>response</code>：返回的数据，使用<code>&#123;&#125;</code></p>
-<ul>
-<li><code>text</code>：返回的文字数据</li>
-<li><code>cookies</code>：返回的cookie信息</li>
-<li><code>status</code>：返回的响应码</li>
-</ul>
-</li>
-</ul>
-<p><strong>举个栗子demo</strong></p>
-<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">[</span><br>  <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是我们的第一个mock栗子&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/demo&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;第一个mock响应demo&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
-<p><strong>get请求demo</strong><br><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">[</span><br>  <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;接口的get请求&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/#/test/xml&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;get&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;get请求接口&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure></p>
-<h2 id="使用moko编写Get和Post测试接口"><a href="#使用moko编写Get和Post测试接口" class="headerlink" title="使用moko编写Get和Post测试接口"></a>使用moko编写Get和Post测试接口</h2><p><strong>上一节已经写了规则，这次直接来编写Get和Post请求</strong></p>
-<p><strong>模拟一个没有参数的get请求</strong><br><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;模拟一个没有参数的get请求&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/getdemo&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;get&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是一个没有参数的get请求&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure><br><strong>模拟一个带参数的请求</strong><br><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;模拟一个带参数的请求&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;getwithparam&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;get&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;queries&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;胡汉三&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;age&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;18&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;我胡汉三又回来了！！！！！&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></p>
-<p><strong>模拟一个Post请求</strong><br><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;模拟一个Post请求&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/postdemo&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;post&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是我的第一个mosk的post请求&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></p>
-<p><strong>这是一个带参数的post请求</strong><br><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是一个带参数的post请求&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/postwithparam&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;post&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;forms&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;胡汉三&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;sex&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;男人&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;我胡汉三带着参数来了！！！！&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></p>
-<h2 id="使用moko编写包含cookie信息的测试接口"><a href="#使用moko编写包含cookie信息的测试接口" class="headerlink" title="使用moko编写包含cookie信息的测试接口"></a>使用moko编写包含cookie信息的测试接口</h2><h3 id="这是一个会返回cookie的get请求"><a href="#这是一个会返回cookie的get请求" class="headerlink" title="这是一个会返回cookie的get请求"></a>这是一个会返回cookie的get请求</h3><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是一个会返回cookie的get请求&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/getCookies&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;get&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;cookies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;login&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;true&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;恭喜你获得cookies信息成功&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">200</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;msg&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;成功&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
-<h4 id="这是一个携带cookies信息的get请求"><a href="#这是一个携带cookies信息的get请求" class="headerlink" title="这是一个携带cookies信息的get请求"></a>这是一个携带cookies信息的get请求</h4><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是一个带cookies信息的get请求&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/get/with/cookies&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;get&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;cookies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;login&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;true&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是一个需要携带cookies信息才能访问的get请求&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
-<h4 id="这是一个携带cookies信息的post请求"><a href="#这是一个携带cookies信息的post请求" class="headerlink" title="这是一个携带cookies信息的post请求"></a>这是一个携带cookies信息的post请求</h4><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是一个带cookies信息的post请求&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/post/with/cookies&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;post&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;cookies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;login&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;true&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;json&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;huhansan&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;age&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;18&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">200</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;json&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;huhansan&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;success&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
-<h2 id="重定向的测试接口"><a href="#重定向的测试接口" class="headerlink" title="重定向的测试接口"></a>重定向的测试接口</h2><ul>
-<li>使用了<code>redirectTo</code>：目标地址</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">[</span><br>  <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;重定向到百度&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/redirect&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;redirectTo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;http://www.baidu.com&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;重定向到自己的网页上&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/redirect/topath&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;redirectTo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/redirect/new&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;这是被重定到的请求&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;uri&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/redirect/new&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;response&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;重定向成功了&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
-<h2 id="下载jar包"><a href="#下载jar包" class="headerlink" title="下载jar包"></a>下载jar包</h2><p>点击<a href="https://repo1.maven.org/maven2/com/github/dreamhead/moco-runner/">moke</a>选择版本进行下载，我下载的的是<code>moco-runner-0.11.0-standalone.jar</code></p>
-<h2 id="使用命令启动测试脚本"><a href="#使用命令启动测试脚本" class="headerlink" title="使用命令启动测试脚本"></a>使用命令启动测试脚本</h2><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json">java -jar jar包的存放路径 http -p 端口 -c json文件路径<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>工具教程</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
       </tags>
   </entry>
   <entry>
